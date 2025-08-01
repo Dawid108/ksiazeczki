@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dawi_108</title>
+    <link rel="icon" href="dawi108.png" type="image/png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">  
+            <h1 id="naglowek">Mola (0/18)</h1>
+            <div class="table-wrapper">
+                <table border="1">
+                    <tr><th>Lp.</th><th>Nr</th><th>Miejsce</th><th>Data</th></tr>
+                    <tr><td></td><td>BM-1</td><td>Międzyzdroje</td><td></td></tr>
+                    <tr><td></td><td>BM-2</td><td>Niechorze</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-3</td><td>Kołobrzeg</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-4</td><td>Ustronie Morskie II</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-5</td><td>Ustronie Morskie I</td><td></td></tr>
+                    <tr><td></td><td>BM-6</td><td>Ustka III</td><td></td></tr>
+                    <tr><td></td><td>BM-7</td><td>Ustka I</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-8</td><td>Puck</td><td></td></tr>
+                    <tr><td></td><td>BM-9</td><td>Osłonino</td><td></td></tr>
+                    <tr><td></td><td>BM-10</td><td>Rzucewo</td><td></td></tr>
+                    <tr><td></td><td>BM-11</td><td>Rewa</td><td></td></tr>
+                    <tr><td></td><td>BM-12</td><td>Mechelinki</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-13</td><td>Gdynia - Orłowo</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-14</td><td>Sopot</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-15</td><td>Gdańsk - Brzeźno</td><td></td></tr>
+                    <tr style="background-color: #90ee90;"><td></td><td>BM-16</td><td>Jastarnia</td><td></td></tr>
+                    <tr><td></td><td>BM-17</td><td>Jurata</td><td></td></tr>
+                    <tr><td></td><td>BM-18</td><td>Frombork</td><td></td></tr>
+                </table>            
+            </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
