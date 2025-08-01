@@ -1,0 +1,15 @@
+{
+  "name": "dawi_108",
+  "short_name": "dawi_108",
+  "start_url": "https://dawid108.github.io/ksiazeczki/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "dawi108.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
