@@ -127,10 +127,6 @@ body.dark-mode .nav-link.active {
 body.dark-mode table, body.dark-mode td, body.dark-mode th {
     border: 1px solid #555;
 }
-body.dark-mode td, body.dark-mode th {
-    background-color: #1e1e1e;
-    color: white;
-}
 .app-icon {
     display: flex;
     flex-direction: column;
