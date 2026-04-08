@@ -25,10 +25,6 @@ if (historia108.length > 100) {
 
 localStorage.setItem("historia108", JSON.stringify(historia108));
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./20251203_sw.js');
-}
-
 
 function numerateTables() {
     // Numeracja wierszy w tabelach bez klasy "nienumerowana"
