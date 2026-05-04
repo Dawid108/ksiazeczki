@@ -8,107 +8,112 @@
     <link rel="manifest" href="manifest.json">
     <style>
         :root {
-            --primary: #2d5a27;
-            --secondary: #4a7c44;
-            --accent: #f4a261;
-            --bg: #f9f9f9;
-            --text: #333;
+            --primary-dark: #2d3436;
+            --accent: #00b894;
+            --bg-color: #f5f6fa;
+            --card-bg: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--primary-dark);
             margin: 0;
             padding: 20px;
+            line-height: 1.6;
         }
 
         header {
             text-align: center;
             padding: 40px 0;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://res.cloudinary.com/diljpkw9f/image/upload/v1777920316/wielka-sowa2_xnrumr.png');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
             color: white;
             border-radius: 15px;
             margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        h1 { margin: 0; font-size: 2.5em; }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .stats { font-size: 1.2rem; opacity: 0.9; }
 
         /* Sekcja Odznak */
         .badges-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
             margin-bottom: 40px;
         }
 
         .badge-card {
-            background: white;
-            padding: 15px 25px;
+            background: var(--card-bg);
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border-top: 5px solid var(--accent);
-            min-width: 150px;
         }
 
-        .badge-card h3 { margin: 5px 0; color: var(--primary); }
-        .badge-date { font-size: 0.9em; color: #666; }
+        .badge-card h3 { margin: 0 0 10px 0; color: #636e72; }
+        .badge-date { font-weight: bold; color: var(--accent); }
 
-        /* Tabela/Lista Szczytów */
+        /* Lista Szczytów */
         .peaks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .peak-card {
-            background: white;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
         }
 
         .peak-card:hover { transform: translateY(-5px); }
 
-        .peak-images {
-            display: flex;
-            gap: 2px;
-            background: #eee;
-            height: 300px;
+        .peak-info {
+            padding: 20px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
         }
 
-        .peak-images img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            flex: 1;
-        }
-
-        .peak-info { padding: 20px; }
         .peak-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            flex-wrap: wrap;
         }
 
-        .peak-title { font-size: 1.25em; font-weight: bold; color: var(--primary); }
-        .peak-height { background: var(--secondary); color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.9em; }
-        .peak-date { color: #777; font-size: 0.85em; }
+        .peak-name { font-size: 1.5rem; font-weight: bold; }
+        .peak-meta { color: #636e72; }
 
-        .status-complete { color: #2d5a27; font-weight: bold; }
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background: #fdfdfd;
+            justify-content: flex-start;
+        }
 
-        @media (max-width: 600px) {
-            .peak-images { height: 225px; }
-            .peak-images img { height: 225px; }
+        /* Stylizacja zdjęć */
+        .peak-photo {
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Klasy dla proporcji */
+        .landscape { aspect-ratio: 4 / 3; width: auto; }
+        .portrait { aspect-ratio: 3 / 4; width: auto; }
+
+        @media (max-width: 768px) {
+            .peak-photo { width: 100%; height: auto; max-height: 400px; }
         }
     </style>
 </head>
@@ -116,246 +121,236 @@
 
 <header>
     <h1>Korona Gór Sowich</h1>
-    <p>Moje zdobyte szczyty: 15 / 15</p>
+    <p class="stats">Postęp: 15 / 15 szczytów</p>
 </header>
 
 <section class="badges-container">
     <div class="badge-card">
-        <h3>Popularna (1)</h3>
-        <div class="badge-date">01.04.2021</div>
+        <h3>Popularna</h3>
+        <p>1 szczyt</p>
+        <p class="badge-date">01.04.2021</p>
     </div>
     <div class="badge-card">
-        <h3>Brązowa (5)</h3>
-        <div class="badge-date">29.10.2022</div>
+        <h3>Brązowa</h3>
+        <p>5 szczytów</p>
+        <p class="badge-date">29.10.2022</p>
     </div>
     <div class="badge-card">
-        <h3>Srebrna (10)</h3>
-        <div class="badge-date">07.03.2026</div>
+        <h3>Srebrna</h3>
+        <p>10 szczytów</p>
+        <p class="badge-date">07.03.2026</p>
     </div>
-    <div class="badge-card" style="border-color: #ffd700;">
-        <h3>Złota (15)</h3>
-        <div class="badge-date">03.05.2026</div>
+    <div class="badge-card">
+        <h3>Złota</h3>
+        <p>15 szczytów</p>
+        <p class="badge-date">03.05.2026</p>
     </div>
 </section>
 
-<div class="peaks-grid">
+<main class="peaks-grid">
     <!-- 1. Wielka Sowa -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920316/wielka-sowa2_xnrumr.png" alt="Wielka Sowa">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png" alt="Wielka Sowa">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">1. Wielka Sowa</span>
-                <span class="peak-height">1015 m n.p.m.</span>
+                <span class="peak-name">1. Wielka Sowa (1015 m)</span>
+                <span class="peak-meta">Zdobyto: 01.04.2021, 20.10.2022, 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 01.04.2021, 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920316/wielka-sowa2_xnrumr.png" class="peak-photo landscape" alt="Wielka Sowa">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png" class="peak-photo portrait" alt="Wielka Sowa">
         </div>
     </div>
 
     <!-- 2. Mała Sowa -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918783/mala-sowa_wecvax.png" alt="Mała Sowa">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">2. Mała Sowa</span>
-                <span class="peak-height">972 m n.p.m.</span>
+                <span class="peak-name">2. Mała Sowa (972 m)</span>
+                <span class="peak-meta">Zdobyto: 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918783/mala-sowa_wecvax.png" class="peak-photo landscape" alt="Mała Sowa">
         </div>
     </div>
 
     <!-- 3. Kalenica -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920317/kalenica2_nc7zoa.png" alt="Kalenica">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919138/kalenica_gtfmpx.png" alt="Kalenica">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">3. Kalenica</span>
-                <span class="peak-height">964 m n.p.m.</span>
+                <span class="peak-name">3. Kalenica (964 m)</span>
+                <span class="peak-meta">Zdobyto: 29.10.2022, 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 29.10.2022, 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920317/kalenica2_nc7zoa.png" class="peak-photo landscape" alt="Kalenica">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919138/kalenica_gtfmpx.png" class="peak-photo portrait" alt="Kalenica">
         </div>
     </div>
 
     <!-- 4. Słoneczna -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920317/sloneczna2_u1jrvo.png" alt="Słoneczna">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919139/sloneczna_wgjy0k.png" alt="Słoneczna">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">4. Słoneczna</span>
-                <span class="peak-height">960 m n.p.m.</span>
+                <span class="peak-name">4. Słoneczna (960 m)</span>
+                <span class="peak-meta">Zdobyto: 29.10.2022, 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 29.10.2022, 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920317/sloneczna2_u1jrvo.png" class="peak-photo landscape" alt="Słoneczna">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919139/sloneczna_wgjy0k.png" class="peak-photo portrait" alt="Słoneczna">
         </div>
     </div>
 
     <!-- 5. Kozia Równia -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919053/kozia-rownia_i9bo5m.png" alt="Kozia Równia">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">5. Kozia Równia</span>
-                <span class="peak-height">930 m n.p.m.</span>
+                <span class="peak-name">5. Kozia Równia (930 m)</span>
+                <span class="peak-meta">Zdobyto: 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919053/kozia-rownia_i9bo5m.png" class="peak-photo portrait" alt="Kozia Równia">
         </div>
     </div>
 
     <!-- 6. Rymarz -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920317/rymarz2_brbyfy.png" alt="Rymarz">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919139/rymarz_mwhc3b.png" alt="Rymarz">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">6. Rymarz</span>
-                <span class="peak-height">913 m n.p.m.</span>
+                <span class="peak-name">6. Rymarz (913 m)</span>
+                <span class="peak-meta">Zdobyto: 29.10.2022, 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 29.10.2022, 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920317/rymarz2_brbyfy.png" class="peak-photo landscape" alt="Rymarz">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919139/rymarz_mwhc3b.png" class="peak-photo portrait" alt="Rymarz">
         </div>
     </div>
 
     <!-- 7. Popielak -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919283/popielak_alsq2e.png" alt="Popielak">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">7. Popielak</span>
-                <span class="peak-height">856 m n.p.m.</span>
+                <span class="peak-name">7. Popielak (856 m)</span>
+                <span class="peak-meta">Zdobyto: 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919283/popielak_alsq2e.png" class="peak-photo portrait" alt="Popielak">
         </div>
     </div>
 
     <!-- 8. Malinowa -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538476/12_Malinowa_rxuuw5.jpg" alt="Malinowa">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">8. Malinowa</span>
-                <span class="peak-height">839 m n.p.m.</span>
+                <span class="peak-name">8. Malinowa (839 m)</span>
+                <span class="peak-meta">Zdobyto: 12.10.2024</span>
             </div>
-            <div class="peak-date">Zdobyto: 12.10.2024</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538476/12_Malinowa_rxuuw5.jpg" class="peak-photo portrait" alt="Malinowa">
         </div>
     </div>
 
     <!-- 9. Wroniec -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v177792040/wroniec_z3dalg.png" alt="Wroniec">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">9. Wroniec</span>
-                <span class="peak-height">835 m n.p.m.</span>
+                <span class="peak-name">9. Wroniec (835 m)</span>
+                <span class="peak-meta">Zdobyto: 20.10.2022</span>
             </div>
-            <div class="peak-date">Zdobyto: 20.10.2022</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777920040/wroniec_z3dalg.png" class="peak-photo landscape" alt="Wroniec">
         </div>
     </div>
 
     <!-- 10. Szeroka -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538502/12_Szeroka_hohemv.jpg" alt="Szeroka">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">10. Szeroka</span>
-                <span class="peak-height">827 m n.p.m.</span>
+                <span class="peak-name">10. Szeroka (827 m)</span>
+                <span class="peak-meta">Zdobyto: 12.10.2024</span>
             </div>
-            <div class="peak-date">Zdobyto: 12.10.2024</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538502/12_Szeroka_hohemv.jpg" class="peak-photo portrait" alt="Szeroka">
         </div>
     </div>
 
     <!-- 11. Włodarz -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919727/wlodarz_ukxhhl.png" alt="Włodarz">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">11. Włodarz</span>
-                <span class="peak-height">811 m n.p.m.</span>
+                <span class="peak-name">11. Włodarz (811 m)</span>
+                <span class="peak-meta">Zdobyto: 10.08.2022</span>
             </div>
-            <div class="peak-date">Zdobyto: 10.08.2022</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919727/wlodarz_ukxhhl.png" class="peak-photo portrait" alt="Włodarz">
         </div>
     </div>
 
     <!-- 12. Gołębia -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538410/12_Golebia_iiuooi.jpg" alt="Gołębia">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">12. Gołębia</span>
-                <span class="peak-height">810 m n.p.m.</span>
+                <span class="peak-name">12. Gołębia (810 m)</span>
+                <span class="peak-meta">Zdobyto: 12.10.2024</span>
             </div>
-            <div class="peak-date">Zdobyto: 12.10.2024</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538410/12_Golebia_iiuooi.jpg" class="peak-photo portrait" alt="Gołębia">
         </div>
     </div>
 
     <!-- 13. Młyńsko -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918988/mlynsko_anplyj.png" alt="Młyńsko">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">13. Młyńsko</span>
-                <span class="peak-height">777 m n.p.m.</span>
+                <span class="peak-name">13. Młyńsko (777 m)</span>
+                <span class="peak-meta">Zdobyto: 07.03.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 07.03.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918988/mlynsko_anplyj.png" class="peak-photo portrait" alt="Młyńsko">
         </div>
     </div>
 
     <!-- 14. Jedlińska Kopa -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919283/jedlinska-kopa_pg5oxg.png" alt="Jedlińska Kopa">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">14. Jedlińska Kopa</span>
-                <span class="peak-height">725 m n.p.m.</span>
+                <span class="peak-name">14. Jedlińska Kopa (725 m)</span>
+                <span class="peak-meta">Zdobyto: 03.05.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 03.05.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919283/jedlinska-kopa_pg5oxg.png" class="peak-photo landscape" alt="Jedlińska Kopa">
         </div>
     </div>
 
     <!-- 15. Osówka -->
     <div class="peak-card">
-        <div class="peak-images">
-            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919283/osowka_lqyoab.png" alt="Osówka">
-        </div>
         <div class="peak-info">
             <div class="peak-header">
-                <span class="peak-title">15. Osówka</span>
-                <span class="peak-height">716 m n.p.m.</span>
+                <span class="peak-name">15. Osówka (716 m)</span>
+                <span class="peak-meta">Zdobyto: 03.05.2026</span>
             </div>
-            <div class="peak-date">Zdobyto: 03.05.2026</div>
+        </div>
+        <div class="photo-gallery">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777919283/osowka_lqyoab.png" class="peak-photo landscape" alt="Osówka">
         </div>
     </div>
-</div>
 
-<footer style="text-align: center; margin-top: 50px; color: #777; font-size: 0.9em;">
-    <p>Korona Gór Sowich zdobyta w 100%.</p>
+</main>
+
+<footer style="text-align: center; margin-top: 50px; color: #95a5a6; padding-bottom: 20px;">
+    &copy; 2026 Korona Gór Sowich - Moja Kolekcja
 </footer>
 
 </body>
