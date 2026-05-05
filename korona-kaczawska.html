@@ -3,50 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Korona Kaczawska</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary: #2d5a27;
+            --accent: #8eb057;
+            --bg: #f4f7f1;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://res.cloudinary.com/diljpkw9f/image/upload/v1744211761/30_Skopiec_hxirk0.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .card-number {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+
+        .height {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .date {
+            color: #888;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #333;
+            color: white;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <h1 id="naglowek">Korona Kaczawska (0/30)</h1>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Szczyt</th><th>Wys</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Skopiec</td><td>724 m</td><td>01.10.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Maślak (Folwarczna)</td><td>720 m</td><td>01.10.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Okole</td><td>714 m</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Łysa Góra</td><td>707 m</td><td>02.04.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Turzec</td><td>684 m</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Poręba</td><td>671 m</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Lubrza</td><td>666 m</td><td>07.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Żeleźniak</td><td>664 m</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Różanka</td><td>628 m</td><td>02.02.2025</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Miłek</td><td>596 m</td><td>07.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Dłużek</td><td>592 m</td><td>07.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Krzyżowa</td><td>567 m</td><td>02.04.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Szybowcowa</td><td>561 m</td><td>05.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Stromiec</td><td>551 m</td><td>05.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Ostrzyca</td><td>501 m</td><td>05.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Mszana</td><td>475 m</td><td>28.03.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Czartowska Skała</td><td>468 m</td><td>28.03.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Rosocha</td><td>464 m</td><td>02.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Górzec</td><td>445 m</td><td>02.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zawadna</td><td>445 m</td><td>02.04.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Średnia Góra</td><td>427 m</td><td>02.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Radogost</td><td>398 m</td><td>28.03.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Swarna</td><td>390 m</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Grodziec</td><td>389 m</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wielisławka</td><td>372 m</td><td>02.04.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Bazaltowa</td><td>367 m</td><td>28.03.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Rataj</td><td>350 m</td><td>28.03.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Świątek</td><td>330 m</td><td>16.02.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Czerwony Kamień</td><td>325 m</td><td>02.04.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Duży Młynik</td><td>303 m</td><td>02.04.2026</td></tr>
-        </table>                    
+
+<header>
+    <h1>Korona Kaczawska</h1>
+    <p>Moja przygoda w Górach i na Pogórzu Kaczawskim</p>
+</header>
+
+<div class="stats">
+    <strong>Postęp: 30 / 30 szczytów</strong> (100% ukończone)
+</div>
+
+<div class="container">
+    <div class="grid" id="peaks-grid">
+        <!-- Szczyty są generowane automatycznie przez skrypt poniżej -->
     </div>
-    </div>
-    <script src="script.js"></script>
+</div>
+
+<footer>
+    <p>&copy; 2026 - Pasja i Góry</p>
+</footer>
+
+<script>
+    const data = [
+        {lp: 1, name: "Skopiec", h: "724 m", date: "30.01.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1744211761/30_Skopiec_hxirk0.jpg"},
+        {lp: 2, name: "Maślak (Folwarczna)", h: "720 m", date: "1.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1746538842/01_Folwarczna_aymrpb.jpg"},
+        {lp: 3, name: "Okole", h: "714 m", date: "4.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980728/okole_mg6urs.png"},
+        {lp: 4, name: "Łysa Góra", h: "707 m", date: "2.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980294/lysa-gora-kaczawskie_n3lzmu.png"},
+        {lp: 5, name: "Turzec", h: "684 m", date: "1.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979799/turzec_qjp5lh.png"},
+        {lp: 6, name: "Poręba", h: "671 m", date: "22.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777981284/poreba_kj9co7.png"},
+        {lp: 7, name: "Lubrza", h: "666 m", date: "7.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980981/lubrza_bqlznk.png"},
+        {lp: 8, name: "Żeleźniak", h: "664 m", date: "30.01.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777981284/zelezniak_yckevg.png"},
+        {lp: 9, name: "Różanka", h: "628 m", date: "2.02.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1744211483/02_R%C3%B3%C5%BCanka_1_jrjhvn.jpg"},
+        {lp: 10, name: "Miłek", h: "596 m", date: "7.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980982/gora-milek_gfzzz6.png"},
+        {lp: 11, name: "Dłużek", h: "592 m", date: "7.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980982/dluzek_tjvsna.png"},
+        {lp: 12, name: "Krzyżowa", h: "567 m", date: "2.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980294/krzyzowa-kaczawskie_ittoea.png"},
+        {lp: 13, name: "Szybowcowa", h: "561 m", date: "5.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979799/szybowcowa_qtpznx.png"},
+        {lp: 14, name: "Stromiec", h: "551 m", date: "5.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979961/stromiec_flnvsr.png"},
+        {lp: 15, name: "Ostrzyca", h: "501 m", date: "5.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979961/ostrzyca_oqbtoc.png"},
+        {lp: 16, name: "Mszana", h: "475 m", date: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980294/mszana_c0y431.png"},
+        {lp: 17, name: "Czartowska Skała", h: "468 m", date: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980101/czartowska-skala_v26jef.png"},
+        {lp: 18, name: "Rosocha", h: "464 m", date: "2.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980565/rosocha_gyhela.png"},
+        {lp: 19, name: "Górzec", h: "445 m", date: "2.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980565/gorzec_xrxlxa.png"},
+        {lp: 20, name: "Zawadna", h: "445 m", date: "2.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980420/zawadna_ucyecx.png"},
+        {lp: 21, name: "Średnia Góra", h: "427 m", date: "2.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980728/srednia-gora_ldp7bk.png"},
+        {lp: 22, name: "Radogost", h: "398 m", date: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979961/radogost_fewboi.png"},
+        {lp: 23, name: "Swarna", h: "390 m", date: "1.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979799/swarna_yuabsf.png"},
+        {lp: 24, name: "Grodziec", h: "389 m", date: "8.07.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777970936/zamek-grodziec_rhsbpg.png"},
+        {lp: 25, name: "Wielisławka", h: "372 m", date: "2.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980420/wielislawka_jxuc8y.png"},
+        {lp: 26, name: "Bazaltowa", h: "367 m", date: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980102/bazaltowa_jqvam5.png"},
+        {lp: 27, name: "Rataj", h: "350 m", date: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980101/rataj_afc4ub.png"},
+        {lp: 28, name: "Świątek", h: "330 m", date: "16.02.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980566/swiatek_aaysak.png"},
+        {lp: 29, name: "Czerwony Kamień", h: "325 m", date: "2.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980420/czerwony-kamien_opzrmi.png"},
+        {lp: 30, name: "Duży Młynik", h: "303 m", date: "2.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980728/duzy-mlynik_bidmaf.png"}
+    ];
+
+    const grid = document.getElementById('peaks-grid');
+
+    data.forEach(peak => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <img src="${peak.img}" alt="${peak.name}" class="card-image" loading="lazy">
+            <div class="card-content">
+                <span class="card-number">#${peak.lp}</span>
+                <h3>${peak.name}</h3>
+                <div class="details">
+                    <span class="height">🏔️ ${peak.h}</span>
+                    <span class="date">📅 ${peak.date}</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+</script>
+
 </body>
 </html>
