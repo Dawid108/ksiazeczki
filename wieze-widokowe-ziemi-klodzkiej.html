@@ -9,244 +9,420 @@
     <script src="script.js"></script>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #27ae60;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
+            --bg-dark: #121418;
+            --card-bg: #1e2229;
+            --accent-green: #4ade80;
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --gradient: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         header {
             text-align: center;
-            padding: 40px 0;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
         }
 
-        h1 { margin: 0; font-size: 2.5em; }
-        .subtitle { opacity: 0.9; font-size: 1.2em; }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
+        .badge-count {
+            display: inline-block;
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--accent-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Grid System */
+        .tower-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* Tower Card */
+        .tower-card {
+            background: var(--card-bg);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
-        thead {
-            background-color: var(--accent-color);
-            color: white;
+        .tower-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(74, 222, 128, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
+        .img-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
         }
-
-        tr:hover { background-color: #f9f9f9; }
 
         .tower-img {
             width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
+            transition: transform 0.5s ease;
         }
 
-        .tower-img:hover {
-            transform: scale(1.5);
+        .tower-card:hover .tower-img {
+            transform: scale(1.1);
         }
 
-        .height-tag {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 4px 8px;
-            border-radius: 4px;
+        .card-content {
+            padding: 20px;
+        }
+
+        .tower-num {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: bold;
+            z-index: 2;
         }
 
-        @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
-            tr { border: 1px solid #ccc; margin-bottom: 10px; }
-            td {
-                border: none;
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-            }
-            td:before {
-                position: absolute;
-                left: 10px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                content: attr(data-label);
-                font-weight: bold;
-                text-align: left;
-            }
-            .tower-img { width: 100%; height: auto; }
+        .tower-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: var(--text-main);
         }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .height-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .date-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .height-unit {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-left: 2px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
+        <div class="badge-count">Kolekcja Odznak: 17 / 17</div>
         <h1>Wieże Widokowe Ziemi Kłodzkiej</h1>
-        <p class="subtitle">Moja kolekcja zdobytych szczytów (17 obiektów)</p>
     </header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Lp.</th>
-                <th>Wieża</th>
-                <th>Wysokość (m n.p.m.)</th>
-                <th>Data zdobycia</th>
-                <th>Zdjęcie</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-label="Lp.">1</td>
-                <td data-label="Wieża">Borówkowa</td>
-                <td data-label="Wysokość"><span class="height-tag">900</span></td>
-                <td data-label="Data">11.11.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984539/borowkowa_k0fskp.png" alt="Borówkowa" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">2</td>
-                <td data-label="Wieża">Czernica</td>
-                <td data-label="Wysokość"><span class="height-tag">1083</span></td>
-                <td data-label="Data">15.07.2023</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/czernica-wieza_tskcxw.png" alt="Czernica" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">3</td>
-                <td data-label="Wieża">Czerniec</td>
-                <td data-label="Wysokość"><span class="height-tag">891</span></td>
-                <td data-label="Data">1.11.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985003/czerniec_uz89it.png" alt="Czerniec" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">4</td>
-                <td data-label="Wieża">Góra Świętej Anny</td>
-                <td data-label="Wysokość"><span class="height-tag">647</span></td>
-                <td data-label="Data">13.10.2024</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538243/13_Anna_2_v3bm74.jpg" alt="Góra Świętej Anny" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">5</td>
-                <td data-label="Wieża">Góra Wszystkich Świętych</td>
-                <td data-label="Wysokość"><span class="height-tag">648</span></td>
-                <td data-label="Data">29.10.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983364/gora-wszystkich-swietych_gkjurs.png" alt="Góra Wszystkich Świętych" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">6</td>
-                <td data-label="Wieża">Grodziszcze</td>
-                <td data-label="Wysokość"><span class="height-tag">396</span></td>
-                <td data-label="Data">29.10.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985002/zamiast-grodziszcze_evddsq.png" alt="Grodziszcze" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">7</td>
-                <td data-label="Wieża">Jagodna</td>
-                <td data-label="Wysokość"><span class="height-tag">977</span></td>
-                <td data-label="Data">27.10.2023</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985503/jagodna-wieza_si3j8k.png" alt="Jagodna" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">8</td>
-                <td data-label="Wieża">Jawornik Wielki</td>
-                <td data-label="Wysokość"><span class="height-tag">874</span></td>
-                <td data-label="Data">11.11.2021</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984539/jawornik-wielki_zd0xzg.png" alt="Jawornik Wielki" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">9</td>
-                <td data-label="Wieża">Kalenica</td>
-                <td data-label="Wysokość"><span class="height-tag">964</span></td>
-                <td data-label="Data">29.10.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985503/kalenica-wieza_xuorlv.png" alt="Kalenica" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">10</td>
-                <td data-label="Wieża">Kłodzka Góra</td>
-                <td data-label="Wysokość"><span class="height-tag">757</span></td>
-                <td data-label="Data">14.05.2024</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png" alt="Kłodzka Góra" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">11</td>
-                <td data-label="Wieża">Orlica</td>
-                <td data-label="Wysokość"><span class="height-tag">1084</span></td>
-                <td data-label="Data">25.09.2023</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985504/orlica-wieza_uytumn.png" alt="Orlica" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">12</td>
-                <td data-label="Wieża">Suszyna</td>
-                <td data-label="Wysokość"><span class="height-tag">465</span></td>
-                <td data-label="Data">16.07.2023</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985254/suszynka_iaxmgv.png" alt="Suszyna" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">13</td>
-                <td data-label="Wieża">Szyndzielnia</td>
-                <td data-label="Wysokość"><span class="height-tag">410</span></td>
-                <td data-label="Data">1.11.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985002/marianska-dolina_cnmomw.png" alt="Szyndzielnia" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">14</td>
-                <td data-label="Wieża">Trójmorski Wierch</td>
-                <td data-label="Wysokość"><span class="height-tag">1145</span></td>
-                <td data-label="Data">11.07.2023</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/trojmorski-wierch2_ro31ma.png" alt="Trójmorski Wierch" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">15</td>
-                <td data-label="Wieża">Wapniarka</td>
-                <td data-label="Wysokość"><span class="height-tag">532</span></td>
-                <td data-label="Data">29.10.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984538/wapniarka_mvwv5q.png" alt="Wapniarka" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">16</td>
-                <td data-label="Wieża">Wielka Sowa</td>
-                <td data-label="Wysokość"><span class="height-tag">1015</span></td>
-                <td data-label="Data">20.10.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png" alt="Wielka Sowa" class="tower-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">17</td>
-                <td data-label="Wieża">Włodzicka Góra</td>
-                <td data-label="Wysokość"><span class="height-tag">757</span></td>
-                <td data-label="Data">3.05.2022</td>
-                <td><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/wlodzicka-gora_jmmffd.png" alt="Włodzicka Góra" class="tower-img"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="tower-grid">
+        <!-- Card 1 -->
+        <div class="tower-card">
+            <span class="tower-num">#01</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984539/borowkowa_k0fskp.png" class="tower-img" alt="Borówkowa">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Borówkowa</h2>
+                <div class="info-row">
+                    <div class="height-label">900 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">11.11.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tower-card">
+            <span class="tower-num">#02</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/czernica-wieza_tskcxw.png" class="tower-img" alt="Czernica">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Czernica</h2>
+                <div class="info-row">
+                    <div class="height-label">1083 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">15.07.2023</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tower-card">
+            <span class="tower-num">#03</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985003/czerniec_uz89it.png" class="tower-img" alt="Czerniec">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Czerniec</h2>
+                <div class="info-row">
+                    <div class="height-label">891 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">01.11.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tower-card">
+            <span class="tower-num">#04</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746538243/13_Anna_2_v3bm74.jpg" class="tower-img" alt="Góra Św. Anny">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Góra Świętej Anny</h2>
+                <div class="info-row">
+                    <div class="height-label">647 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">13.10.2024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="tower-card">
+            <span class="tower-num">#05</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983364/gora-wszystkich-swietych_gkjurs.png" class="tower-img" alt="Góra Wszystkich Świętych">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Góra Wszystkich Świętych</h2>
+                <div class="info-row">
+                    <div class="height-label">648 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">29.10.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="tower-card">
+            <span class="tower-num">#06</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985002/zamiast-grodziszcze_evddsq.png" class="tower-img" alt="Grodziszcze">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Grodziszcze</h2>
+                <div class="info-row">
+                    <div class="height-label">396 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">29.10.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="tower-card">
+            <span class="tower-num">#07</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985503/jagodna-wieza_si3j8k.png" class="tower-img" alt="Jagodna">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Jagodna</h2>
+                <div class="info-row">
+                    <div class="height-label">977 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">27.10.2023</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="tower-card">
+            <span class="tower-num">#08</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984539/jawornik-wielki_zd0xzg.png" class="tower-img" alt="Jawornik Wielki">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Jawornik Wielki</h2>
+                <div class="info-row">
+                    <div class="height-label">874 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">11.11.2021</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="tower-card">
+            <span class="tower-num">#09</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985503/kalenica-wieza_xuorlv.png" class="tower-img" alt="Kalenica">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Kalenica</h2>
+                <div class="info-row">
+                    <div class="height-label">964 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">29.10.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="tower-card">
+            <span class="tower-num">#10</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png" class="tower-img" alt="Kłodzka Góra">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Kłodzka Góra</h2>
+                <div class="info-row">
+                    <div class="height-label">757 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">14.05.2024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="tower-card">
+            <span class="tower-num">#11</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985504/orlica-wieza_uytumn.png" class="tower-img" alt="Orlica">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Orlica</h2>
+                <div class="info-row">
+                    <div class="height-label">1084 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">25.09.2023</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="tower-card">
+            <span class="tower-num">#12</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985254/suszynka_iaxmgv.png" class="tower-img" alt="Suszyna">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Suszyna</h2>
+                <div class="info-row">
+                    <div class="height-label">465 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">16.07.2023</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="tower-card">
+            <span class="tower-num">#13</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985002/marianska-dolina_cnmomw.png" class="tower-img" alt="Szyndzielnia">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Szyndzielnia</h2>
+                <div class="info-row">
+                    <div class="height-label">410 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">01.11.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="tower-card">
+            <span class="tower-num">#14</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/trojmorski-wierch2_ro31ma.png" class="tower-img" alt="Trójmorski Wierch">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Trójmorski Wierch</h2>
+                <div class="info-row">
+                    <div class="height-label">1145 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">11.07.2023</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="tower-card">
+            <span class="tower-num">#15</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984538/wapniarka_mvwv5q.png" class="tower-img" alt="Wapniarka">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Wapniarka</h2>
+                <div class="info-row">
+                    <div class="height-label">532 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">29.10.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 16 -->
+        <div class="tower-card">
+            <span class="tower-num">#16</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png" class="tower-img" alt="Wielka Sowa">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Wielka Sowa</h2>
+                <div class="info-row">
+                    <div class="height-label">1015 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">20.10.2022</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 17 -->
+        <div class="tower-card">
+            <span class="tower-num">#17</span>
+            <div class="img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/wlodzicka-gora_jmmffd.png" class="tower-img" alt="Włodzicka Góra">
+            </div>
+            <div class="card-content">
+                <h2 class="tower-title">Włodzicka Góra</h2>
+                <div class="info-row">
+                    <div class="height-label">757 <span class="height-unit">m n.p.m.</span></div>
+                    <div class="date-label">03.05.2022</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 </body>
