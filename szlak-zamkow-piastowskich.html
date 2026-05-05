@@ -3,37 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Szlak Zamków Piastowskich</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --bg: #f4f7f6;
+            --text: #333;
+            --card-bg: #fff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; }
+        .progress { font-size: 1.2rem; opacity: 0.9; }
+
+        .castle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .castle-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .castle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .castle-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .castle-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .castle-number {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .castle-name {
+            display: block;
+            font-size: 1.25rem;
+            margin: 5px 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .castle-date {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .strava-section {
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .strava-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .strava-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #fc4c02; /* Strava Orange */
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .castle-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <h1 id="naglowek">Szlak Zamków Piastowskich (0/17)</h1>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Miejsce</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Grodno</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Stary Książ</td><td>30.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Książ</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Cisy</td><td>04.05.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Kłaczyna</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Świny</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Bolków</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Niesytno</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Bolczów</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Sokolec</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Pałac Bóbr</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Pałac Wojanów</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Koziniec</td><td>06.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wzgórze Krzywoustego (wały grodu Krzywoustego)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wieża rycerska w Siedlęcinie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Wleń (Gródek Wleński)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Grodziec</td><td></td></tr>
-        </table>                    
+
+<header>
+    <h1>Szlak Zamków Piastowskich</h1>
+    <div class="progress">Ukończono: 17 / 17 obiektów (100%)</div>
+</header>
+
+<div class="castle-grid">
+    <!-- 1 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777970936/zamek-grodno_adtk5k.png" alt="Zamek Grodno" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#1</span>
+            <span class="castle-name">Zamek Grodno</span>
+            <span class="castle-date">📅 5.07.2009</span>
+        </div>
     </div>
+
+    <!-- 2 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968450/zamek-stary-ksiaz_iratb8.png" alt="Zamek Stary Książ" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#2</span>
+            <span class="castle-name">Zamek Stary Książ</span>
+            <span class="castle-date">📅 30.04.2026</span>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- 3 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/zamek-ksiaz_u65qp2.png" alt="Zamek Książ" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#3</span>
+            <span class="castle-name">Zamek Książ</span>
+            <span class="castle-date">📅 11.04.2021</span>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968451/zamek-cisy_nbu48d.png" alt="Zamek Cisy" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#4</span>
+            <span class="castle-name">Zamek Cisy</span>
+            <span class="castle-date">📅 4.05.2026</span>
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968450/zamek-klaczyna_xanm2c.png" alt="Zamek Kłaczyna" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#5</span>
+            <span class="castle-name">Zamek Kłaczyna</span>
+            <span class="castle-date">📅 28.03.2024</span>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968665/zamek-swiny_fjbk89.png" alt="Zamek Świny" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#6</span>
+            <span class="castle-name">Zamek Świny</span>
+            <span class="castle-date">📅 1.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/zamek-bolkow_neacz3.png" alt="Zamek Bolków" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#7</span>
+            <span class="castle-name">Zamek Bolków</span>
+            <span class="castle-date">📅 30.05.2020</span>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968665/zamek-niestyno_e37pwc.png" alt="Zamek Niesytno" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#8</span>
+            <span class="castle-name">Zamek Niesytno</span>
+            <span class="castle-date">📅 1.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1746541050/21_Bolczow_gvcwll.jpg" alt="Zamek Bolczów" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#9</span>
+            <span class="castle-name">Zamek Bolczów</span>
+            <span class="castle-date">📅 21.08.2024</span>
+        </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/krzyzna-gora_emzz7k.png" alt="Zamek Sokolec" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#10</span>
+            <span class="castle-name">Zamek Sokolec</span>
+            <span class="castle-date">📅 25.07.2021</span>
+        </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968871/palac-bobrow_qerir0.png" alt="Pałac Bóbr" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#11</span>
+            <span class="castle-name">Pałac Bóbr</span>
+            <span class="castle-date">📅 1.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968871/palac-wojanow_eq1gb5.png" alt="Pałac Wojanów" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#12</span>
+            <span class="castle-name">Pałac Wojanów</span>
+            <span class="castle-date">📅 1.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777969150/koziniec_dfdcjp.png" alt="Zamek Koziniec" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#13</span>
+            <span class="castle-name">Zamek Koziniec</span>
+            <span class="castle-date">📅 6.04.2026</span>
+        </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968871/wzgorze-krzywoustego_megis2.png" alt="Wzgórze Krzywoustego" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#14</span>
+            <span class="castle-name">Wzgórze Krzywoustego</span>
+            <span class="castle-date">📅 5.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968984/zamek-siedlecin_yohyxl.png" alt="Wieża rycerska w Siedlęcinie" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#15</span>
+            <span class="castle-name">Wieża rycerska w Siedlęcinie</span>
+            <span class="castle-date">📅 5.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777968984/zamek-wlen_bbcmy0.png" alt="Zamek Wleń" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#16</span>
+            <span class="castle-name">Zamek Wleń</span>
+            <span class="castle-date">📅 5.11.2023</span>
+        </div>
+    </div>
+
+    <!-- 17 -->
+    <div class="castle-card">
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777970936/zamek-grodziec_rhsbpg.png" alt="Zamek Grodziec" class="castle-img">
+        <div class="castle-info">
+            <span class="castle-number">#17</span>
+            <span class="castle-name">Zamek Grodziec</span>
+            <span class="castle-date">📅 8.07.2022</span>
+        </div>
+    </div>
+</div>
+
+<div class="strava-section">
+    <h2>Przebyte Trasy</h2>
+    <div class="strava-grid">
+        <div class="strava-card">
+            <h3>1. Zamek Cisy</h3>
+            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="18371598686" data-style="standard" data-from-embed="false" data-token="MWS9mwKmU0T8OR1SNiaRr0xgzQhpasm8FpE279iqyBI"></div>
+        </div>
+        <div class="strava-card">
+            <h3>2. Koziniec</h3>
+            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="17999859348" data-style="standard" data-from-embed="false" data-token="bvBPZoQ91459ZTo_W-4M5nwyLxR-3y6QCMJ7LFpar6c"></div>
+        </div>
+        <div class="strava-card">
+            <h3>3. Zamek Stary Książ</h3>
+            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="18317401295" data-style="standard" data-from-embed="false" data-token="Bnbl1oYTKpiKCVeVcgl36Ppa6ebg8e9O3iu_ev8v_Qc"></div>
+        </div>
+        <div class="strava-card">
+            <h3>4. Zamek Bolczów</h3>
+            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="13540381097" data-style="standard" data-from-embed="false" data-token="88xo0HwoLrKfWo7SRI3EydFhWkmqUqvTAI1JJkBh8Ac"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://strava-embeds.com/embed.js"></script>
 </body>
 </html>
