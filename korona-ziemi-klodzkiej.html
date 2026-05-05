@@ -8,254 +8,191 @@
     <link rel="manifest" href="manifest.json">
     <script src="script.js"></script>
     <style>
-:root {
-    --primary: #2d5a27;
-    --secondary: #4a7c44;
-    --accent: #f39c12;
-    --text-light: #ecf0f1;
-    --bg-dark: #1a1a1a;
-}
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #159895;
+            --accent: #54bab9;
+            --background: #f0f2f5;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+        }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
-    background-attachment: fixed;
-    color: #333;
-    margin: 0;
-    padding: 40px 20px;
-}
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-}
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
 
-h1 {
-    text-align: center;
-    color: var(--primary);
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-    letter-spacing: -1px;
-}
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
 
-.stats {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    color: var(--secondary);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
+        .counter {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 10px; /* Odstępy między wierszami */
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-thead th {
-    background-color: transparent;
-    color: #7f8c8d;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    padding: 15px;
-    border: none;
-}
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
 
-tbody tr {
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
 
-tbody tr:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    background: #fdfdfd;
-}
+        .card-img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
 
-td {
-    padding: 20px 15px;
-    border: none;
-}
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-/* Zaokrąglone rogi dla wierszy */
-td:first-child { border-radius: 12px 0 0 12px; font-weight: bold; color: #bdc3c7; }
-td:last-child { border-radius: 0 12px 12px 0; }
+        .card:hover .card-img {
+            transform: scale(1.1);
+        }
 
-.height-cell {
-    color: var(--primary);
-    font-weight: 800;
-    font-size: 1.1rem;
-}
+        .card-body {
+            padding: 20px;
+        }
 
-.height-cell::after {
-    content: " m";
-    font-size: 0.8rem;
-    color: #95a5a6;
-}
+        .peak-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(26, 95, 122, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
 
-.peak-img {
-    width: 140px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .peak-title {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
 
-.peak-img:hover {
-    transform: scale(1.5);
-    z-index: 10;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
+        .peak-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
 
-/* Styl dla daty */
-td[data-label="Data"] {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-}
+        .height {
+            background: #e8f4f8;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
 
-/* Responsywność */
-@media (max-width: 768px) {
-    .container { padding: 20px; }
-    
-    tbody tr { display: block; margin-bottom: 20px; padding: 10px; border-radius: 15px; }
-    
-    td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 5px;
-        text-align: right;
-        border-bottom: 1px solid #eee;
-    }
-    
-    td:last-child { border-bottom: none; }
-    
-    td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        color: #95a5a6;
-    }
-    
-    .peak-img { width: 100px; height: 60px; }
-    .peak-img:hover { transform: scale(1.2); }
-}
+        .date {
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+        }
+
+        .date::before {
+            content: '📅';
+            margin-right: 5px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
+<header>
     <h1>Korona Ziemi Kłodzkiej</h1>
-    <p class="stats">Postęp: 12 / 12 (100%) ✅</p>
+    <div class="counter">Status: 12 / 12 Szczytów Ukończono ✅</div>
+</header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Lp.</th>
-                <th>Szczyt</th>
-                <th>Wysokość (m n.p.m.)</th>
-                <th>Data zdobycia</th>
-                <th>Zdjęcie</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-label="Lp.">1</td>
-                <td data-label="Szczyt">Śnieżnik Kłodzki</td>
-                <td data-label="Wysokość" class="height-cell">1426</td>
-                <td data-label="Data">30.10.2022</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/snieznik-klodzki_pyso5a.png" alt="Śnieżnik Kłodzki" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">2</td>
-                <td data-label="Szczyt">Rudawiec</td>
-                <td data-label="Wysokość" class="height-cell">1112</td>
-                <td data-label="Data">13.11.2021</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/rudawiec_vq2vo2.png" alt="Rudawiec" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">3</td>
-                <td data-label="Szczyt">Orlica</td>
-                <td data-label="Wysokość" class="height-cell">1084</td>
-                <td data-label="Data">4.06.2021</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986681/orlica_yzqx2y.png" alt="Orlica" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">4</td>
-                <td data-label="Szczyt">Wielka Sowa</td>
-                <td data-label="Wysokość" class="height-cell">1015</td>
-                <td data-label="Data">20.10.2022</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png" alt="Wielka Sowa" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">5</td>
-                <td data-label="Szczyt">Kowadło</td>
-                <td data-label="Wysokość" class="height-cell">989</td>
-                <td data-label="Data">12.11.2021</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986678/kowadlo_gc8ivq.png" alt="Kowadło" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">6</td>
-                <td data-label="Szczyt">Jagodna</td>
-                <td data-label="Wysokość" class="height-cell">977</td>
-                <td data-label="Data">5.06.2021</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/jagodna_mapbhk.png" alt="Jagodna" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">7</td>
-                <td data-label="Szczyt">Suchoń</td>
-                <td data-label="Wysokość" class="height-cell">964</td>
-                <td data-label="Data">10.08.2022</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777987112/suchon_cvenfn.png" alt="Suchoń" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">8</td>
-                <td data-label="Szczyt">Szczeliniec Wielki</td>
-                <td data-label="Wysokość" class="height-cell">919</td>
-                <td data-label="Data">3.06.2021</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/szczeliniec-wielki_yd11mu.png" alt="Szczeliniec Wielki" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">9</td>
-                <td data-label="Szczyt">Grodziec</td>
-                <td data-label="Wysokość" class="height-cell">803</td>
-                <td data-label="Data">2.05.2022</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777987113/grodziec_f1nuvk.png" alt="Grodziec" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">10</td>
-                <td data-label="Szczyt">Kłodzka Góra</td>
-                <td data-label="Wysokość" class="height-cell">765</td>
-                <td data-label="Data">14.05.2024</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png" alt="Kłodzka Góra" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">11</td>
-                <td data-label="Szczyt">Włodzicka Góra</td>
-                <td data-label="Wysokość" class="height-cell">758</td>
-                <td data-label="Data">3.05.2022</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/wlodzicka-gora_jmmffd.png" alt="Włodzicka Góra" class="peak-img"></td>
-            </tr>
-            <tr>
-                <td data-label="Lp.">12</td>
-                <td data-label="Szczyt">Nowa Kopa</td>
-                <td data-label="Wysokość" class="height-cell">553</td>
-                <td data-label="Data">2.01.2022</td>
-                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986941/nowa-kopa-bez_zytwyv.png" alt="Nowa Kopa" class="peak-img"></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<main class="grid" id="peaks-container">
+    </main>
+
+<script>
+    const peaks = [
+        {lp: 1, nazwa: "Śnieżnik Kłodzki", wys: 1426, data: "30.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/snieznik-klodzki_pyso5a.png"},
+        {lp: 2, nazwa: "Rudawiec", wys: 1112, data: "13.11.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/rudawiec_vq2vo2.png"},
+        {lp: 3, nazwa: "Orlica", wys: 1084, data: "04.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986681/orlica_yzqx2y.png"},
+        {lp: 4, nazwa: "Wielka Sowa", wys: 1015, data: "20.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png"},
+        {lp: 5, nazwa: "Kowadło", wys: 989, data: "12.11.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986678/kowadlo_gc8ivq.png"},
+        {lp: 6, nazwa: "Jagodna", wys: 977, data: "05.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/jagodna_mapbhk.png"},
+        {lp: 7, nazwa: "Suchoń", wys: 964, data: "10.08.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777987112/suchon_cvenfn.png"},
+        {lp: 8, nazwa: "Szczeliniec Wielki", wys: 919, data: "03.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/szczeliniec-wielki_yd11mu.png"},
+        {lp: 9, nazwa: "Grodziec", wys: 803, data: "02.05.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777987113/grodziec_f1nuvk.png"},
+        {lp: 10, nazwa: "Kłodzka Góra", wys: 765, data: "14.05.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png"},
+        {lp: 11, nazwa: "Włodzicka Góra", wys: 758, data: "03.05.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/wlodzicka-gora_jmmffd.png"},
+        {lp: 12, nazwa: "Nowa Kopa", wys: 553, data: "02.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986941/nowa-kopa-bez_zytwyv.png"}
+    ];
+
+    const container = document.getElementById('peaks-container');
+
+    peaks.forEach(peak => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="peak-number">Szczyt ${peak.lp}</div>
+            <div class="card-img-container">
+                <img src="${peak.img}" alt="${peak.nazwa}" class="card-img" loading="lazy">
+            </div>
+            <div class="card-body">
+                <h2 class="peak-title">${peak.nazwa}</h2>
+                <div class="peak-meta">
+                    <span class="height">${peak.wys} m n.p.m.</span>
+                    <span class="date">${peak.data}</span>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+</script>
 
 </body>
 </html>
