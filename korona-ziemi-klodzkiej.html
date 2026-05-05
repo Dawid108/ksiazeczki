@@ -3,32 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Korona Ziemi Kłodzkiej</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        .stats {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #27ae60;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .peak-img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .peak-img:hover {
+            transform: scale(1.1);
+        }
+        .height-cell {
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th {
+                display: none;
+            }
+            tr {
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+            }
+            td {
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
+            }
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                font-weight: bold;
+                text-align: left;
+            }
+            .peak-img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <h1 id="naglowek">Korona Ziemi Kłodzkiej (0/12)</h1>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Szczyt</th><th>Wys</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Śnieżnik Kłodzki</td><td>1426</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Rudawiec</td><td>1112</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Orlica</td><td>1084</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wielka Sowa</td><td>1015</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kowadło</td><td>989</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Jagodna</td><td>977</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Suchoń</td><td>964</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Szczeliniec Wielki</td><td>919</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Grodziec</td><td>803</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kłodzka Góra</td><td>765</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Włodzicka Góra</td><td>758</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Nowa Kopa</td><td>553</td><td></td></tr>
-        </table>                
-    </div>
-    </div>
-    <script src="script.js"></script>
+
+<div class="container">
+    <h1>Korona Ziemi Kłodzkiej</h1>
+    <p class="stats">Postęp: 12 / 12 (100%) ✅</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Lp.</th>
+                <th>Szczyt</th>
+                <th>Wysokość (m n.p.m.)</th>
+                <th>Data zdobycia</th>
+                <th>Zdjęcie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Lp.">1</td>
+                <td data-label="Szczyt">Śnieżnik Kłodzki</td>
+                <td data-label="Wysokość" class="height-cell">1426</td>
+                <td data-label="Data">30.10.2022</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/snieznik-klodzki_pyso5a.png" alt="Śnieżnik Kłodzki" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">2</td>
+                <td data-label="Szczyt">Rudawiec</td>
+                <td data-label="Wysokość" class="height-cell">1112</td>
+                <td data-label="Data">13.11.2021</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/rudawiec_vq2vo2.png" alt="Rudawiec" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">3</td>
+                <td data-label="Szczyt">Orlica</td>
+                <td data-label="Wysokość" class="height-cell">1084</td>
+                <td data-label="Data">4.06.2021</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986681/orlica_yzqx2y.png" alt="Orlica" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">4</td>
+                <td data-label="Szczyt">Wielka Sowa</td>
+                <td data-label="Wysokość" class="height-cell">1015</td>
+                <td data-label="Data">20.10.2022</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png" alt="Wielka Sowa" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">5</td>
+                <td data-label="Szczyt">Kowadło</td>
+                <td data-label="Wysokość" class="height-cell">989</td>
+                <td data-label="Data">12.11.2021</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986678/kowadlo_gc8ivq.png" alt="Kowadło" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">6</td>
+                <td data-label="Szczyt">Jagodna</td>
+                <td data-label="Wysokość" class="height-cell">977</td>
+                <td data-label="Data">5.06.2021</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/jagodna_mapbhk.png" alt="Jagodna" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">7</td>
+                <td data-label="Szczyt">Suchoń</td>
+                <td data-label="Wysokość" class="height-cell">964</td>
+                <td data-label="Data">10.08.2022</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777987112/suchon_cvenfn.png" alt="Suchoń" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">8</td>
+                <td data-label="Szczyt">Szczeliniec Wielki</td>
+                <td data-label="Wysokość" class="height-cell">919</td>
+                <td data-label="Data">3.06.2021</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/szczeliniec-wielki_yd11mu.png" alt="Szczeliniec Wielki" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">9</td>
+                <td data-label="Szczyt">Grodziec</td>
+                <td data-label="Wysokość" class="height-cell">803</td>
+                <td data-label="Data">2.05.2022</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777987113/grodziec_f1nuvk.png" alt="Grodziec" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">10</td>
+                <td data-label="Szczyt">Kłodzka Góra</td>
+                <td data-label="Wysokość" class="height-cell">765</td>
+                <td data-label="Data">14.05.2024</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png" alt="Kłodzka Góra" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">11</td>
+                <td data-label="Szczyt">Włodzicka Góra</td>
+                <td data-label="Wysokość" class="height-cell">758</td>
+                <td data-label="Data">3.05.2022</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/wlodzicka-gora_jmmffd.png" alt="Włodzicka Góra" class="peak-img"></td>
+            </tr>
+            <tr>
+                <td data-label="Lp.">12</td>
+                <td data-label="Szczyt">Nowa Kopa</td>
+                <td data-label="Wysokość" class="height-cell">553</td>
+                <td data-label="Data">2.01.2022</td>
+                <td data-label="Zdjęcie"><img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777986941/nowa-kopa-bez_zytwyv.png" alt="Nowa Kopa" class="peak-img"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>
