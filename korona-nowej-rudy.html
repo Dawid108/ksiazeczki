@@ -3,27 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Korona Nowej Rudy</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; }
+        .stats { font-size: 1.2rem; opacity: 0.9; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mountain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-container {
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .peak-name {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .peak-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .peak-info li {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .label { font-weight: bold; color: #7f8c8d; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <h1 id="naglowek">Korona Nowej Rudy (0/7)</h1>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Szczyt</th><th>Wys</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Góra Wszystkich Świętych</td><td>648</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Góra św. Anny</td><td>647</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Krępiec</td><td>645</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Sokoli Garb</td><td>615</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wilkowiec</td><td>598</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Bogusza</td><td>539</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Ruda Góra</td><td>516</td><td></td></tr>
-        </table>                
+
+<div class="container">
+    <header>
+        <h1>Korona Nowej Rudy</h1>
+        <p class="stats">Zdobyto: <strong>7</strong> z 7 szczytów (100%)</p>
+    </header>
+
+    <div class="mountain-grid">
+        <!-- Szczyt 1 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983364/gora-wszystkich-swietych_gkjurs.png" alt="Góra Wszystkich Świętych" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">1. Góra Wszystkich Świętych</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 648 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 29.10.2022</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Szczyt 2 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983193/gora-swietej-anny_z1kr0y.png" alt="Góra św. Anny" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">2. Góra św. Anny</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 647 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 13.10.2024</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Szczyt 3 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983193/krepiec_mhlwlf.png" alt="Krępiec" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">3. Krępiec</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 645 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 13.10.2024</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Szczyt 4 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983046/sokoli-garb_rxywd4.png" alt="Sokoli Garb" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">4. Sokoli Garb</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 615 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 13.10.2024</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Szczyt 5 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983192/wilkowiec_hzarpq.png" alt="Wilkowiec" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">5. Wilkowiec</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 598 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 14.10.2024</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Szczyt 6 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983047/bogusza_alfr4g.png" alt="Bogusza" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">6. Bogusza</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 539 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 13.10.2024</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Szczyt 7 -->
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1777983048/ruda-gora_a3kr7l.png" alt="Ruda Góra" class="card-img">
+            </div>
+            <div class="card-content">
+                <h3 class="peak-name">7. Ruda Góra</h3>
+                <ul class="peak-info">
+                    <li><span class="label">Wysokość:</span> 516 m n.p.m.</li>
+                    <li><span class="label">Data wejścia:</span> 13.10.2024</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
-    </div>
-    <script src="script.js"></script>
+</div>
+
 </body>
 </html>
