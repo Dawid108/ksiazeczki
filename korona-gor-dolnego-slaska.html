@@ -3,43 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Korona Gór Dolnego Śląska</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary-color: #2d5a27;
+            --secondary-color: #4a7c44;
+            --accent-color: #f4f1de;
+            --text-dark: #333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        .peak-name {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+
+        .peak-info {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .peak-info span {
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-            <h1 id="naglowek">Korona Gór Dolnego Śląska (0/23)</h1>
-            <div class="table-wrapper">
-                <table border="1">
-                    <tr><th>Lp.</th><th>Szczyt</th><th>Wys</th><th>Data</th></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Śnieżka</td><td>1603</td><td>22.08.2024</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Łabski Szczyt</td><td>1472</td><td>04.11.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Śnieżnik</td><td>1423</td><td>30.10.2022</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Szrenica</td><td>1362</td><td>04.11.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Skalny Stół</td><td>1281</td><td>02.11.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Wysoka Kopa</td><td>1126</td><td>16.10.2024</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Rudawiec</td><td>1112</td><td>13.11.2021</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Stóg Izerski</td><td>1105</td><td>01.02.2025</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Orlica</td><td>1084</td><td>25.09.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Wysoki Kamień</td><td>1058</td><td>30.09.2024</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Wielka Sowa</td><td>1015</td><td>20.10.2022</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Kowadło</td><td>989</td><td>12.11.2021</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Jagodna</td><td>977</td><td>27.10.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Skalnik</td><td>945</td><td>20.06.2024</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Waligóra</td><td>936</td><td>25.04.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Szczeliniec Wielki</td><td>919</td><td>03.06.2021</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Borowa</td><td>853</td><td>27.03.2022</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Chełmiec</td><td>851</td><td>25.04.2023</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Szeroka Góra</td><td>766</td><td>14.05.2024</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Kłodzka Góra</td><td>757</td><td>14.05.2024</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Okole</td><td>725</td><td>04.04.2026</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Ślęża</td><td>718</td><td>30.09.2022</td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Ostrzyca</td><td>501</td><td>05.11.2023</td></tr>
-                </table>
+
+<header>
+    <h1>Korona Gór Dolnego Śląska</h1>
+    <div class="stats">Postęp: 23 / 23 (100%) ✅</div>
+</header>
+
+<div class="grid-container" id="gallery">
+    <!-- Karty zostaną wygenerowane przez JS -->
+</div>
+
+<script>
+    const szczyty = [
+        {lp: 1, nazwa: "Śnieżka", wys: 1603, data: "22.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1746540165/22_Sniezka_2_otgolb.jpg"},
+        {lp: 2, nazwa: "Łabski Szczyt", wys: 1472, data: "04.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063800/labski-szczyt_b0dotc.png"},
+        {lp: 3, nazwa: "Śnieżnik", wys: 1423, data: "30.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/snieznik-klodzki_pyso5a.png"},
+        {lp: 4, nazwa: "Szrenica", wys: 1362, data: "04.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778062573/szrenica_evvdp7.png"},
+        {lp: 5, nazwa: "Skalny Stół", wys: 1281, data: "02.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778062572/skalny-stol_kt17bq.png"},
+        {lp: 6, nazwa: "Wysoka Kopa", wys: 1126, data: "16.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1746539374/30_Wysoka_Kopa_x8a0oj.jpg"},
+        {lp: 7, nazwa: "Rudawiec", wys: 1112, data: "13.11.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/rudawiec_vq2vo2.png"},
+        {lp: 8, nazwa: "Stóg Izerski", wys: 1105, data: "01.02.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1744211588/01_St%C3%B3g_Izerski_2_bkgzfu.jpg"},
+        {lp: 9, nazwa: "Orlica", wys: 1084, data: "25.09.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986681/orlica_yzqx2y.png"},
+        {lp: 10, nazwa: "Wysoki Kamień", wys: 1058, data: "30.09.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1746539118/30_Wysoki_Kamien_3_nktr5o.jpg"},
+        {lp: 11, nazwa: "Wielka Sowa", wys: 1015, data: "20.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png"},
+        {lp: 12, nazwa: "Kowadło", wys: 989, data: "12.11.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986678/kowadlo_gc8ivq.png"},
+        {lp: 13, nazwa: "Jagodna", wys: 977, data: "27.10.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/jagodna_mapbhk.png"},
+        {lp: 14, nazwa: "Skalnik", wys: 945, data: "20.06.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063801/skalnik_x1b1b6.png"},
+        {lp: 15, nazwa: "Waligóra", wys: 936, data: "25.04.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063493/waligora_bgskso.png"},
+        {lp: 16, nazwa: "Szczeliniec Wielki", wys: 919, data: "03.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/szczeliniec-wielki_yd11mu.png"},
+        {lp: 17, nazwa: "Borowa", wys: 853, data: "27.03.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063800/borowa_cohxpt.png"},
+        {lp: 18, nazwa: "Chełmiec", wys: 851, data: "25.04.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063492/chelmiec_phke7z.png"},
+        {lp: 19, nazwa: "Szeroka Góra", wys: 766, data: "14.05.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063119/szeroka-gora_wsmwhy.png"},
+        {lp: 20, nazwa: "Kłodzka Góra", wys: 757, data: "14.05.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png"},
+        {lp: 21, nazwa: "Okole", wys: 725, data: "04.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980728/okole_mg6urs.png"},
+        {lp: 22, nazwa: "Ślęża", wys: 718, data: "14.10.2018", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063493/sleza_bfxomx.png"},
+        {lp: 23, nazwa: "Ostrzyca", wys: 501, data: "05.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979961/ostrzyca_oqbtoc.png"}
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    szczyty.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-number">${s.lp}</div>
+            <img src="${s.img}" alt="${s.nazwa}" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=Brak+zdjęcia'">
+            <div class="card-content">
+                <h2 class="peak-name">${s.nazwa}</h2>
+                <div class="peak-info">
+                    <div><span>Wysokość:</span> ${s.wys} m n.p.m.</div>
+                    <div class="badge">📅 Zdobyto: ${s.data}</div>
+                </div>
             </div>
-    </div>
-    <script src="script.js"></script>
+        `;
+        gallery.appendChild(card);
+    });
+</script>
+
 </body>
 </html>
