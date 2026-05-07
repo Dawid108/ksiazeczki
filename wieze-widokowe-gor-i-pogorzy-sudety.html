@@ -3,146 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Wieże Widokowe Sudetów</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary-color: #2d5a27;
+            --secondary-color: #4a7c44;
+            --accent-color: #f4f1de;
+            --text-dark: #333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .card-content {
+            padding: 12px;
+            flex-grow: 1;
+        }
+
+        .card-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .id-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .peak-name {
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #f0f2f0;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <h1 id="naglowek">Sudety (0/126)</h1>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Id</th><th>Miejsce</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-1</td><td>Smrek (Smrk)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-2</td><td>Wysoki Kamień</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-3</td><td>Czerniawska Kopa</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-4</td><td>Zamek Wleń</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-5</td><td>Wzgórze Krzywoustego</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-6</td><td>Wieża ciśnień w Mirsku</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-7</td><td>Perła Zachodu w Siedlęcinie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-8</td><td>Zamek Czocha</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-9</td><td>Sokolik</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-10</td><td>Szrenica</td><td></td></tr>
-            <tr><td></td><td>S-11</td><td>Paciorki</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-12</td><td>Zamek Chojnik</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-13</td><td>Zamek ks. Henryka (Grodna)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-14</td><td>Zamek Kessela (Bukowiec)</td><td>03.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-15</td><td>Park Maciejowa</td><td>06.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-16</td><td>Okole</td><td>04.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-17</td><td>Dłużek</td><td>07.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-18</td><td>Krzyżowa</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-19</td><td>Podgórki (Świerzawa)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-20</td><td>Radomierz</td><td>07.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-21</td><td>Mszana</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-22</td><td>Zawadnia (Gozdno)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-23</td><td>Radogost</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-24</td><td>Bazaltowa Góra</td><td></td></tr>
-            <tr><td></td><td>S-25</td><td>Ruprechticki Szpiczak</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-26</td><td>Dzikowiec</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-27</td><td>Jałowiec</td><td>02.05.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-28</td><td>Borowa</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-29</td><td>Chełmiec</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-30</td><td>Trójgarb</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-31</td><td>Wieżyca (koło Dobromierza)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-32</td><td>Modliszów</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-33</td><td>Zamek Bolków</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-34</td><td>Włodzicka Gora</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-35</td><td>Góra Św. Anny</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-36</td><td>Góra Wszystkich Świętych</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-37</td><td>Wielka Sowa</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-38</td><td>Kalenica</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-39</td><td>Taras pod Kozią Równią</td><td>07.03.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-40</td><td>Koci Grzbiet nad Bielawą</td><td>07.03.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-41</td><td>Zamek Grodno</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-42</td><td>Kłodzka Góra</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-43</td><td>Obryw skalny w Bardzie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-44</td><td>Szyndzielnia</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-45</td><td>Czernica</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-46</td><td>Borówkowa Góra</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-47</td><td>Jawornik Wielki</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-48</td><td>Czarna Gora</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-49</td><td>Trójmorski Wierch (Klepáč)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-50</td><td>Zalew w Starej Morawie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-51</td><td>Wapniarka-Bielica</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-52</td><td>Jagodna</td><td></td></tr>
-            <tr><td></td><td>S-53</td><td>Torfowisko pod Zieleńcem</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-54</td><td>Szczeliniec Wielki - Tron Liczyrzepy</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-55</td><td>Góra Kościelna/Parkowa (Mieroszów)</td><td></td></tr>
-            <tr><td></td><td>S-56</td><td>Góra Guzowata (Radków)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-57</td><td>Suszyna</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-58</td><td>Wieszczyna</td><td></td></tr>
-            <tr><td></td><td>S-59</td><td>Kozia Góra</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-60</td><td>Biskupia Kopa</td><td></td></tr>
-            <tr><td></td><td>S-61</td><td>Graniczny Wierch</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-62</td><td>Przednia Kopa (G. Chrobrego)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-63</td><td>Góra Parkowa (Bielawa)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-64</td><td>Myśliszów k/Bielawy</td><td></td></tr>
-            <tr><td></td><td>S-65</td><td>Gromnik</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-66</td><td>Ostra Góra nad Niemczą (Ostrosz)</td><td></td></tr>
-            <tr><td></td><td>S-67</td><td>Grodziszcze (gm. Stoszowice)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-68</td><td>Kawia Góra (Kawcza / Łysica)</td><td></td></tr>
-            <tr><td></td><td>S-69</td><td>Szańcowa (Strzelin)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-70</td><td>Ślęża - wieża</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-71</td><td>Wieża Bismarcka na Wieżycy</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-72</td><td>Wieża Bismarcka na Jańskiej Górze</td><td>08.03.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>S-73</td><td>Góra Krzyżowa (G. Św. Jerzego)</td><td></td></tr>
-            <tr><td></td><td>S-74</td><td>Winna Góra (Mściwojów)</td><td></td></tr>  
-            <tr style="background-color: #90ee90;"><td></td><td>T-1</td><td>Wieża kościelna w Bielawie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-2</td><td>Twierdza Srebrna Góra</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-3</td><td>Sołtysia Góra (Cieplice)</td><td>06.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-4</td><td>Grodziszcze k/Ścinawki</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-5</td><td>Błędne Skały - parking</td><td></td></tr>
-            <tr><td></td><td>T-6</td><td>Grzybowiec</td><td></td></tr>
-            <tr><td></td><td>T-7</td><td>Tatarski Okop</td><td></td></tr>
-            <tr><td></td><td>T-8</td><td>Pod Strażnicą</td><td></td></tr>
-            <tr><td></td><td>T-9</td><td>Opactwo w Krzeszowie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-10</td><td>Pod Dłużyną</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-11</td><td>Złoty Widok w Szklarskiej Porębie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-12</td><td>Orle Skały na Szczytniku</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-13</td><td>Krzywa Wieża w Ząbkowicach Śl.</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-14</td><td>Wieża ratuszowa w Świdnicy</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-15</td><td>Baszta Kłodzka w Bystrzycy</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-16</td><td>Twierdza Kłodzka</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-17</td><td>Skocznia Orlinek w Karpaczu</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-18</td><td>Wieża Bramy Górnej w Głuchołazach</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-19</td><td>Altana Miłości w Kudowie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-20</td><td>Zamek Grodziec</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-21</td><td>Wieża zamku w Międzylesiu</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-22</td><td>Stara Kopalnia w Wałbrzychu</td><td></td></tr>
-            <tr><td></td><td>T-23</td><td>Wieża ratuszowa w Paczkowie</td><td></td></tr>
-            <tr><td></td><td>T-24</td><td>Zamek w Otmuchowie</td><td></td></tr>
-            <tr><td></td><td>T-25</td><td>Złoty Widok w Michałowicach</td><td></td></tr>
-            <tr><td></td><td>T-26</td><td>Wieża Bracka w Lubaniu</td><td></td></tr>
-            <tr><td></td><td>T-27</td><td>Szyb Witold w Boguszowie-Gorcach</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-28</td><td>Czerniec</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-29</td><td>Orlica (Vrchmezí)</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-30</td><td>Ruiny wapiennika w Wojcieszowie</td><td>07.04.2026</td></tr>
-            <tr><td></td><td>T-31</td><td>Nad Jeziorem Bystrzyckim</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-32</td><td>Pod Srebrną Kopą</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-33</td><td>Wieża Anny w Szczawnie-Zdroju</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-34</td><td>Wieża w Ciechanowicach</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-35</td><td>Tężnia solankowa w Głuchołazach</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-36</td><td>Zbójeckie Skały</td><td></td></tr>
-            <tr><td></td><td>T-37</td><td>Mościsko</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-38</td><td>Sky Walk w Świeradowie Zdroju</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-39</td><td>Wieża kościoła w Głuszycy Górnej</td><td>01.05.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-40</td><td>Baszta Kowalska w Złotoryi</td><td></td></tr>
-            <tr><td></td><td>T-41</td><td>Wiatrak w Pstrążnej</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-42</td><td>Skała Karczmarz</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-43</td><td>Młynica</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-44</td><td>Baszta Zamkowa w Jeleniej Górze</td><td>05.04.2026</td></tr>
-            <tr><td></td><td>T-45</td><td>Brama Wrocławska w Paczkowie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-46</td><td>Wieża ratuszowa w Dzierżoniowie</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-47</td><td>Wzgórze Giedymina</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-48</td><td>Trojak</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-49</td><td>Śnieżnik</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-50</td><td>Gomólnik Mały</td><td></td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>T-51</td><td>Wieża w parku Jana III Sobieskiego w Wałbrzychu</td><td></td></tr>
-            <tr><td></td><td>T-52</td><td>Wieża dawnego kościoła ewangelickiego w Złotym Stoku</td><td></td></tr>                                                              
-        </table>                  
+
+<header>
+    <h1>Wieże Widokowe Sudetów</h1>
+    <div class="stats">Postęp: 89 / 75 (118%) 🏆</div>
+</header>
+
+<div class="grid-container" id="gallery">
     </div>
-    </div>
-    <script src="script.js"></script>
+
+<script>
+    const wieze = [
+        {lp: 1, id: "S-1", nazwa: "Smrek (Smrk)", data: "30.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158154/smrk-izerskie_ahwgq4.png"},
+        {lp: 2, id: "S-2", nazwa: "Wysoki Kamień", data: "30.09.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158154/wysoki-kamien_nwpmou.png"},
+        {lp: 3, id: "S-3", nazwa: "Czerniawska Kopa", data: "31.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158153/czerniawska-kopa_nia0ml.png"},
+        {lp: 4, id: "S-4", nazwa: "Zamek Wleń", data: "05.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777968984/zamek-wlen_bbcmy0.png"},
+        {lp: 5, id: "S-5", nazwa: "Wzgórze Krzywoustego", data: "05.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777968871/wzgorze-krzywoustego_megis2.png"},
+        {lp: 6, id: "S-6", nazwa: "Wieża ciśnień w Mirsku", data: "31.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158153/wieza-cisnien-mirsk_juhetx.png"},
+        {lp: 7, id: "S-7", nazwa: "Perła Zachodu", data: "05.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777968984/zamek-siedlecin_yohyxl.png"},
+        {lp: 8, id: "S-8", nazwa: "Zamek Czocha", data: "27.10.2013", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140743/zamek-czocha_shih2q.png"},
+        {lp: 9, id: "S-9", nazwa: "Sokolik", data: "25.07.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158695/sokolik_siltq5.png"},
+        {lp: 10, id: "S-10", nazwa: "Szrenica", data: "04.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778062573/szrenica_evvdp7.png"},
+        {lp: 11, id: "S-12", nazwa: "Zamek Chojnik", data: "30.09.2012", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140743/zamek-chojnik_g6onhm.png"},
+        {lp: 12, id: "S-13", nazwa: "Zamek ks. Henryka", data: "05.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158694/grodna_vahfjo.png"},
+        {lp: 13, id: "S-14", nazwa: "Zamek Kessela (Bukowiec)", data: "03.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158694/wieza-bukowiec_txpngj.png"},
+        {lp: 14, id: "S-15", nazwa: "Park Maciejowa", data: "06.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159017/park-maciejowa_hpozet.png"},
+        {lp: 15, id: "S-16", nazwa: "Okole", data: "04.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980728/okole_mg6urs.png"},
+        {lp: 16, id: "S-17", nazwa: "Dłużek", data: "07.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980982/dluzek_tjvsna.png"},
+        {lp: 17, id: "S-18", nazwa: "Krzyżowa", data: "02.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980294/krzyzowa-kaczawskie_ittoea.png"},
+        {lp: 18, id: "S-19", nazwa: "Podgórki (Świerzawa)", data: "02.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159017/wieza-podgorki_vscqz3.png"},
+        {lp: 19, id: "S-20", nazwa: "Radomierz", data: "07.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159016/wieza-radomierz_tdivkm.png"},
+        {lp: 20, id: "S-21", nazwa: "Mszana", data: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980294/mszana_c0y431.png"},
+        {lp: 21, id: "S-22", nazwa: "Zawadnia (Gozdno)", data: "02.04.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980420/zawadna_ucyecx.png"},
+        {lp: 22, id: "S-23", nazwa: "Radogost", data: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777979961/radogost_fewboi.png"},
+        {lp: 23, id: "S-24", nazwa: "Bazaltowa Góra", data: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777980102/bazaltowa_jqvam5.png"},
+        {lp: 24, id: "S-26", nazwa: "Dzikowiec", data: "10.11.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159991/wieza-dzikowiec_tu5dnm.png"},
+        {lp: 25, id: "S-27", nazwa: "Jałowiec", data: "02.05.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159990/jalowiec_aerbmu.png"},
+        {lp: 26, id: "S-28", nazwa: "Borowa", data: "27.03.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063800/borowa_cohxpt.png"},
+        {lp: 27, id: "S-29", nazwa: "Chełmiec", data: "25.04.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063492/chelmiec_phke7z.png"},
+        {lp: 28, id: "S-30", nazwa: "Trójgarb", data: "11.04.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159990/trojgarb_jtb2ao.png"},
+        {lp: 29, id: "S-31", nazwa: "Wieżyca (Dobromierz)", data: "29.04.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778159990/wieza-dobromierz_xup8ve.png"},
+        {lp: 30, id: "S-33", nazwa: "Zamek Bolków", data: "30.05.2020", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/zamek-bolkow_neacz3.png"},
+        {lp: 31, id: "S-34", nazwa: "Włodzicka Gora", data: "03.05.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/wlodzicka-gora_jmmffd.png"},
+        {lp: 32, id: "S-35", nazwa: "Góra Św. Anny", data: "13.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777983193/gora-swietej-anny_z1kr0y.png"},
+        {lp: 33, id: "S-36", nazwa: "Góra Wszystkich Świętych", data: "29.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777983364/gora-wszystkich-swietych_gkjurs.png"},
+        {lp: 34, id: "S-37", nazwa: "Wielka Sowa", data: "07.03.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777918686/wielka-sowa_ui8rrg.png"},
+        {lp: 35, id: "S-38", nazwa: "Kalenica", data: "07.03.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777919138/kalenica_gtfmpx.png"},
+        {lp: 36, id: "S-39", nazwa: "Taras pod Kozią Równią", data: "07.03.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777919053/kozia-rownia_i9bo5m.png"},
+        {lp: 37, id: "S-40", nazwa: "Koci Grzbiet (Bielawa)", data: "07.03.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162415/koci-grzbiet_tcutn5.png"},
+        {lp: 38, id: "S-41", nazwa: "Zamek Grodno", data: "05.07.2009", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777970936/zamek-grodno_adtk5k.png"},
+        {lp: 39, id: "S-42", nazwa: "Kłodzka Góra", data: "14.05.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/klodzka-gora_yuov5b.png"},
+        {lp: 40, id: "S-43", nazwa: "Obryw skalny w Bardzie", data: "16.07.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162414/obryw-skalny-bardo_mpv444.png"},
+        {lp: 41, id: "S-44", nazwa: "Szyndzielnia", data: "01.11.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985002/marianska-dolina_cnmomw.png"},
+        {lp: 42, id: "S-45", nazwa: "Czernica", data: "15.07.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985255/czernica-wieza_tskcxw.png"},
+        {lp: 43, id: "S-46", nazwa: "Borówkowa Góra", data: "11.11.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984539/borowkowa_k0fskp.png"},
+        {lp: 44, id: "S-47", nazwa: "Jawornik Wielki", data: "11.11.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984539/jawornik-wielki_zd0xzg.png"},
+        {lp: 45, id: "S-48", nazwa: "Czarna Gora", data: "13.11.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778070155/czarna-gora-snieznik_bkuxoo.png"},
+        {lp: 46, id: "S-49", nazwa: "Trójmorski Wierch", data: "11.07.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984266/trojmorski-wierch2_ro31ma.png"},
+        {lp: 47, id: "S-51", nazwa: "Wapniarka-Bielica", data: "29.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777984538/wapniarka_mvwv5q.png"},
+        {lp: 48, id: "S-52", nazwa: "Jagodna", data: "27.10.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985503/jagodna-wieza_si3j8k.png"},
+        {lp: 49, id: "S-54", nazwa: "Szczeliniec Wielki", data: "03.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986942/szczeliniec-wielki_yd11mu.png"},
+        {lp: 50, id: "S-55", nazwa: "Góra Kościelna (Mieroszów)", data: "03.05.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162414/wieza-mieroszow_onah5j.png"},
+        {lp: 51, id: "S-57", nazwa: "Suszyna", data: "16.07.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985254/suszynka_iaxmgv.png"},
+        {lp: 52, id: "S-60", nazwa: "Biskupia Kopa", data: "11.08.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162414/biskupia-kopa_na68qf.png"},
+        {lp: 53, id: "S-63", nazwa: "Góra Parkowa (Bielawa)", data: "12.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162792/gora-parkowa-bielawa_nbrnh5.png"},
+        {lp: 54, id: "S-64", nazwa: "Myśliszów k/Bielawy", data: "12.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162793/platforma-mysliszow_cse2ns.png"},
+        {lp: 55, id: "S-66", nazwa: "Ostra Góra (Niemcza)", data: "14.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162792/ostra-gora-niemcza_gevoy2.png"},
+        {lp: 56, id: "S-68", nazwa: "Kawia Góra", data: "14.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778162791/kawia-gora_fzz85h.png"},
+        {lp: 57, id: "S-70", nazwa: "Ślęża - wieża", data: "14.10.2018", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063493/sleza_bfxomx.png"},
+        {lp: 58, id: "S-72", nazwa: "Jańska Góra (Bismarck)", data: "08.03.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163109/janska-gora_yzzxzu.png"},
+        {lp: 59, id: "S-73", nazwa: "Góra Krzyżowa", data: "01.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163072/krzyzowa-gora_qrrckb.png"},
+        {lp: 60, id: "T-1", nazwa: "Kościół w Bielawie", data: "12.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163071/kosciol-bielawa_otcakc.png"},
+        {lp: 61, id: "T-2", nazwa: "Twierdza Srebrna Góra", data: "14.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163071/twierdza-srebrna-gora_mdvfny.png"},
+        {lp: 62, id: "T-3", nazwa: "Sołtysia Góra (Cieplice)", data: "06.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163070/soltysia-gora_ayf4sy.png"},
+        {lp: 63, id: "T-5", nazwa: "Błędne Skały", data: "03.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163577/bledne-skaly-widok_krhzgl.png"},
+        {lp: 64, id: "T-10", nazwa: "Pod Dłużyną", data: "09.11.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163576/pod-dluzyna_dvs3om.png"},
+        {lp: 65, id: "T-11", nazwa: "Złoty Widok (Szklarska)", data: "30.09.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163575/zloty-widok-szklarska_zcbz4n.png"},
+        {lp: 66, id: "T-12", nazwa: "Orle Skały (Szczytnik)", data: "04.06.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778163575/orle-skaly-szczytnik_zqnr4e.png"},
+        {lp: 67, id: "T-13", nazwa: "Krzywa Wieża (Ząbkowice)", data: "14.05.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165034/krzywa-wieza-zabkowice_jencen.png"},
+        {lp: 68, id: "T-14", nazwa: "Ratusz w Świdnicy", data: "08.11.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165034/ratusz-swidnica_qwfc2e.png"},
+        {lp: 69, id: "T-15", nazwa: "Baszta Kłodzka (Bystrzyca)", data: "30.09.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165033/baszta-klodzka-bystrzyca_rbykwi.png"},
+        {lp: 70, id: "T-16", nazwa: "Twierdza Kłodzka", data: "07.08.2018", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165033/twierdza-klodzko_mrvelk.png"},
+        {lp: 71, id: "T-21", nazwa: "Zamek w Międzylesiu", data: "31.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140263/zamek-miedzylesie_w8argn.png"},
+        {lp: 72, id: "T-22", nazwa: "Stara Kopalnia (Wałbrzych)", data: "09.11.2025", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165755/wieza-kopalnia-walbrzych_te47f9.png"},
+        {lp: 73, id: "T-28", nazwa: "Czerniec", data: "01.11.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985003/czerniec_uz89it.png"},
+        {lp: 74, id: "T-29", nazwa: "Orlica (Vrchmezí)", data: "25.09.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777985504/orlica-wieza_uytumn.png"},
+        {lp: 75, id: "T-30", nazwa: "Wapiennik (Wojcieszów)", data: "07.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165755/wapiennik-wojcieszow_s04ljx.png"},
+        {lp: 76, id: "T-32", nazwa: "Pod Srebrną Kopą", data: "11.08.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165757/pod-srebrna-kopa_ghteiu.png"},
+        {lp: 77, id: "T-33", nazwa: "Wieża Anny (Szczawno)", data: "09.11.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166184/wieza-anny-szczawno_rgjlzi.png"},
+        {lp: 78, id: "T-35", nazwa: "Tężnia (Głuchołazy)", data: "13.08.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778165755/teznia-glucholazy_epkchv.png"},
+        {lp: 79, id: "T-36", nazwa: "Zbójeckie Skały", data: "30.09.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166183/zbojeckie-skaly_asaubh.png"},
+        {lp: 80, id: "T-38", nazwa: "Sky Walk (Świeradów)", data: "30.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166182/sky-walk_obekbq.png"},
+        {lp: 81, id: "T-39", nazwa: "Kościół w Głuszycy", data: "01.05.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166181/kosciol-gluszyca_ezgbm9.png"},
+        {lp: 82, id: "T-43", nazwa: "Młynica", data: "29.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166673/mlynica_qsgovm.png"},
+        {lp: 83, id: "T-44", nazwa: "Baszta (Jelenia Góra)", data: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166672/baszta-jelenia-gora_nxkoaa.png"},
+        {lp: 84, id: "T-46", nazwa: "Ratusz w Dzierżoniowie", data: "12.10.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166671/ratusz-dzierzoniow_kbz0cd.png"},
+        {lp: 85, id: "T-47", nazwa: "Wzgórze Giedymina", data: "09.11.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166670/wzgorze-gedymina_hq5z0n.png"},
+        {lp: 86, id: "T-48", nazwa: "Trojak", data: "11.11.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778066263/trojak_edhnmg.png"},
+        {lp: 87, id: "T-49", nazwa: "Śnieżnik", data: "30.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777986679/snieznik-klodzki_pyso5a.png"},
+        {lp: 88, id: "T-50", nazwa: "Gomólnik Mały", data: "11.11.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166669/gomolnik-maly_g9ob5n.png"},
+        {lp: 89, id: "T-51", nazwa: "P. Sobieskiego (Wałbrzych)", data: "09.11.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778166669/gora-parkowa-walbrzych_ewn3ie.png"}
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    wieze.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-number">#${w.lp}</div>
+            <div class="id-badge">${w.id}</div>
+            <img src="${w.img}" alt="${w.nazwa}" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=Brak+zdjęcia'">
+            <div class="card-content">
+                <h2 class="peak-name">${w.nazwa}</h2>
+                <div class="badge">📅 ${w.data}</div>
+            </div>
+        `;
+        gallery.appendChild(card);
+    });
+</script>
+
 </body>
 </html>
