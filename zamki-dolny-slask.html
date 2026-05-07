@@ -3,40 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Dolny Śląsk - Europejski Szlak Zamków i Pałaców</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary-color: #2d5a27;
+            --secondary-color: #4a7c44;
+            --accent-color: #f4f1de;
+            --text-dark: #333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        .peak-name {
+            font-size: 1.25rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            min-height: 2.8em;
+            display: flex;
+            align-items: center;
+        }
+
+        .peak-info {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-            <h1 id="naglowek">Dolny Śląsk Europejski Szlak Zamków i Pałaców (0/20)</h1>
-            <div class="table-wrapper">
-                <table border="1">
-                    <tr><th>Lp.</th><th>Szczyt</th><th>Data</th></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Muzeum Zamek w Bolkowie</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Pałac Krobielowice</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Pałac Łomnica</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Pałac w Kamieńcu Ząbkowickim</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Pałac Wojanów</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Chojnik</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Czocha</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Grodno</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Grodziec</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Kliczków</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Książ</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Książąt Głogowskich</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Książęcy w Oleśnicy</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Książęcy w Ząbkowicach Śląskich</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Leśnica</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Międzylesie</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Sarny</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Świny</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek Topacz</td><td></td></tr>
-<tr style="background-color: #90ee90;"><td></td><td>Zamek w Roztoce</td><td></td></tr>                    
-                </table>
-            </div>
+
+<header>
+    <h1>Europejski Szlak Zamków i Pałaców</h1>
+    <div class="stats">Odwiedzono: 20 / 20 (100%) ✅</div>
+</header>
+
+<div class="grid-container" id="gallery">
     </div>
-    <script src="script.js"></script>
+
+<script>
+    const obiekty = [
+        {lp: 1, nazwa: "Muzeum Zamek w Bolkowie", data: "30.05.2020", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/zamek-bolkow_neacz3.png"},
+        {lp: 2, nazwa: "Pałac Krobielowice", data: "29.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138711/palac-krobielowice_yfl0qi.png"},
+        {lp: 3, nazwa: "Pałac Łomnica", data: "29.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138711/palac-lomnica_vsgrsw.png"},
+        {lp: 4, nazwa: "Pałac w Kamieńcu Ząbkowickim", data: "16.07.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140263/palac-kamieniec-zabkowicki_e20ecx.png"},
+        {lp: 5, nazwa: "Pałac Wojanów", data: "01.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777968871/palac-wojanow_eq1gb5.png"},
+        {lp: 6, nazwa: "Zamek Chojnik", data: "30.09.2012", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140743/zamek-chojnik_g6onhm.png"},
+        {lp: 7, nazwa: "Zamek Czocha", data: "27.10.2013", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140743/zamek-czocha_shih2q.png"},
+        {lp: 8, nazwa: "Zamek Grodno", data: "05.07.2009", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777970936/zamek-grodno_adtk5k.png"},
+        {lp: 9, nazwa: "Zamek Grodziec", data: "08.07.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777970936/zamek-grodziec_rhsbpg.png"},
+        {lp: 10, nazwa: "Zamek Kliczków", data: "08.07.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140263/zamek-kliczkow_m98xmy.png"},
+        {lp: 11, nazwa: "Zamek Książ", data: "11.04.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/zamek-ksiaz_u65qp2.png"},
+        {lp: 12, nazwa: "Zamek Książąt Głogowskich", data: "14.03.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138154/zamek-glogow_smeqnq.png"},
+        {lp: 13, nazwa: "Zamek Książęcy w Oleśnicy", data: "09.12.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138154/zamek-olesnica_uo6j6y.png"},
+        {lp: 14, nazwa: "Zamek Książęcy w Ząbkowicach Śl.", data: "14.05.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138154/zamek-zabkowice-slaskie_am70qn.png"},
+        {lp: 15, nazwa: "Zamek Leśnica", data: "29.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138710/zamek-lesnica_utfwki.png"},
+        {lp: 16, nazwa: "Zamek Międzylesie", data: "31.10.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778140263/zamek-miedzylesie_w8argn.png"},
+        {lp: 17, nazwa: "Zamek Sarny", data: "02.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138711/zamek-sarny_sjjeuv.png"},
+        {lp: 18, nazwa: "Zamek Świny", data: "01.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777968665/zamek-swiny_fjbk89.png"},
+        {lp: 19, nazwa: "Zamek Topacz", data: "29.01.2022", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138711/zamek-topacz_vm8eoh.png"},
+        {lp: 20, nazwa: "Zamek w Roztoce", data: "28.03.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778138154/zamek-roztoka_u3uqey.png"}
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    obiekty.forEach(o => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-number">${o.lp}</div>
+            <img src="${o.img}" alt="${o.nazwa}" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=Brak+zdjęcia'">
+            <div class="card-content">
+                <h2 class="peak-name">${o.nazwa}</h2>
+                <div class="peak-info">
+                    <div class="badge">📅 Odwiedzono: ${o.data}</div>
+                </div>
+            </div>
+        `;
+        gallery.appendChild(card);
+    });
+</script>
+
 </body>
 </html>
