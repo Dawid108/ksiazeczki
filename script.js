@@ -1,31 +1,3 @@
-const fileName = window.location.pathname.split("/").pop() || "index.html";
-const pageUrl = window.location.href;
-
-let namePart = fileName.includes("_")
-    ? fileName.split("_")[1].replace(".html", "")
-    : fileName.replace(".html", "");
-
-const now = new Date();
-const dateString = now.toLocaleDateString("pl-PL");
-
-let historia108 = JSON.parse(localStorage.getItem("historia108")) || [];
-
-historia108 = historia108.filter(item => item.file !== fileName);
-
-historia108.push({
-    file: fileName,
-    name: namePart,
-    url: pageUrl,
-    date: dateString
-});
-
-if (historia108.length > 100) {
-    historia108 = historia108.slice(historia108.length - 100);
-}
-
-localStorage.setItem("historia108", JSON.stringify(historia108));
-
-
 function numerateTables() {
     // Numeracja wierszy w tabelach bez klasy "nienumerowana"
     document.querySelectorAll("table:not(.nienumerowana)").forEach(table => {
@@ -64,3 +36,11 @@ window.onload = function() {
         }
     }
 };
+
+let dawid108 = parseInt(localStorage.getItem("dawid108")) || 0;
+
+// Dodawanie 1 punktu co 5 sekund
+setInterval(() => {
+    dawid108++;
+    localStorage.setItem("dawid108", dawid108);
+}, 5000);
