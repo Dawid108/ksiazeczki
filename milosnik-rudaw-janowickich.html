@@ -3,62 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dawi_108</title>
+    <title>Miłośnik Rudaw Janowickich</title>
     <link rel="icon" href="dawi108.png" type="image/png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --primary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .badge-header {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .badge-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 20px;
+            position: relative;
+            height: 24px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            height: 100%;
+            width: 0%;
+            transition: width 0.8s ease-in-out;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+            font-size: 0.9rem;
+        }
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        /* Styl tabeli dla komputerów */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr {
+            transition: background-color 0.2s;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .visited-row {
+            background-color: #ebf7ee;
+        }
+
+        .img-thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            display: block;
+        }
+
+        .no-photo {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-style: italic;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Responsywność - widok kafelkowy na telefony */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                background: var(--card-bg);
+                margin-bottom: 15px;
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+                padding: 15px;
+                border: 1px solid var(--border-color);
+            }
+
+            .visited-row {
+                border-left: 5px solid var(--accent-color);
+                background-color: var(--card-bg);
+            }
+
+            td {
+                padding: 8px 0;
+                border: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.95rem;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #7f8c8d;
+                margin-right: 15px;
+            }
+
+            td:last-child {
+                margin-top: 10px;
+                border-top: 1px dashed var(--border-color);
+                padding-top: 10px;
+                justify-content: center;
+            }
+
+            .img-thumbnail {
+                width: 100%;
+                height: 160px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-    <h1 id="naglowek">Miłośnik Rudaw Janowickich (0/35)</h1>
-    <h3>Szczyty</h3>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Szczyt</th><th>Wys</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Skalnik</td><td>945</td><td>25.07.2021</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Ostra Mała</td><td>935</td><td>25.07.2021</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wołek</td><td>878</td><td>24.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wielka Kopa</td><td>871</td><td>29.05.2020</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Rudnik</td><td>853</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Jaworowa</td><td>760</td><td>06.07.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Bucza Góra</td><td>671</td><td>10.07.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Krzyżna Góra</td><td>654</td><td>25.07.2021</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Pokrzywna</td><td>638</td><td>10.07.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Lwia Góra</td><td>718</td><td>21.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Miedziana Góra</td><td>630</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Sokolik</td><td>642</td><td>25.07.2021</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Brzeźnik</td><td>555</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Mrowiec</td><td>513</td><td>03.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Dłużyna</td><td>465</td><td>03.04.2026</td></tr>
-        </table>                  
+        <header class="badge-header">
+            <h1 id="naglowek">Miłośnik Rudaw Janowickich</h1>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <span class="progress-text" id="progressText">0 / 35</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="category-section">
+                <h2>Szczyty</h2>
+                <div id="szczytyContainer"></div>
+            </section>
+
+            <section class="category-section">
+                <h2>Obiekty Krajoznawcze</h2>
+                <div id="obiektyContainer"></div>
+            </section>
+        </main>
     </div>
-    <h3>Obiekty Karjoznawcze</h3>
-    <div class="table-wrapper">
-        <table border="1">
-            <tr><th>Lp.</th><th>Miejsce</th><th>Data</th></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Aleja jarząbu szwedzkiego w Janowicach Wielkich</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Grupa skalna – Skalne Bramy</td><td>21.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kamień „Drogi Głodu” na Przełęczy Kowarskiej</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kolorowe jeziorka – Wieściszowice</td><td>29.05.2020</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kościół Najświętszego Serca Pana Jezusa w Mysłakowicach</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kościół Niepokalanego Poczęcia NMP w Raszowie</td><td>06.07.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kowarska Skała</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Krzyż pokutny w Miedziance</td><td>07.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Pieklisko – nieczynny kamieniołom</td><td>21.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Pałac w Ciechanowicach</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Pałac w Wojanowie</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Schronisko PTTK „Szwajcarka”</td><td>25.07.2021</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Skalna Brama Kloebera k/Bukowca</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Skała Fajka</td><td>21.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Skały: Piec i Skalny Most</td><td>21.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Kowarska Starówka</td><td>05.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Stawy Karpnickie</td><td>01.11.2023</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Wieża widokowa w Bukowcu</td><td>03.04.2026</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek Bolczów</td><td>21.08.2024</td></tr>
-            <tr style="background-color: #90ee90;"><td></td><td>Zamek w Karpnikach</td><td>23.06.2026</td></tr>
-        </table>                  
-    </div>
-    </div>
-    <script src="script.js"></script>
+
+    <script>
+        const szczyty = [
+            { name: "Skalnik", height: 945, date: "25.07.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778063801/skalnik_x1b1b6.png" },
+            { name: "Ostra Mała", height: 935, date: "25.07.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783770127/ostra-mala_mb8mra.png" },
+            { name: "Wołek", height: 878, date: "24.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783765419/wolek_rtmyjg.png" },
+            { name: "Wielka Kopa", height: 871, date: "29.05.2020", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783765600/wielka-kopa_gtn8xb.png" },
+            { name: "Rudnik", height: 853, date: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783765419/rudnik_ldcebb.png" },
+            { name: "Jaworowa", height: 760, date: "06.07.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783767950/jaworowa_cjlba3.png" },
+            { name: "Bucza Góra", height: 671, date: "10.07.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783767951/bucza-gora_fcqhnf.png" },
+            { name: "Krzyżna Góra", height: 654, date: "25.07.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777969639/krzyzna-gora_emzz7k.png" },
+            { name: "Pokrzywna", height: 638, date: "10.07.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783767951/jaworzyna_syzlqb.png" },
+            { name: "Lwia Góra", height: 718, date: "21.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783765419/lwia-gora_qdyfgl.png" },
+            { name: "Miedziana Góra", height: 630, date: "01.11.2023", img: "" },
+            { name: "Sokolik", height: 642, date: "25.07.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158695/sokolik_siltq5.png" },
+            { name: "Brzeźnik", height: 555, date: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768376/brzeznik_njomqi.png" },
+            { name: "Mrowiec", height: 513, date: "03.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768683/mrowiec_ybrzs8.png" },
+            { name: "Dłużyna", height: 465, date: "03.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768684/dluzyna_hp4xn9.png" }
+        ];
+
+        const obiekty = [
+            { name: "Aleja jarząbu szwedzkiego w Janowicach Wielkich", date: "01.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783767952/aleja-jarzaba-szwedzkiego_x76jsv.png" },
+            { name: "Grupa skalna – Skalne Bramy", date: "21.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768683/skalne-bramy_gbgwcd.png" },
+            { name: "Kamień „Drogi Głodu” na Przełęczy Kowarskiej", date: "05.04.2026", img: "" },
+            { name: "Kolorowe jeziorka – Wieściszowice", date: "29.05.2020", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783770125/kolorowe-jeziorka_b8ljol.png" },
+            { name: "Kościół Najświętszego Serca Pana Jezusa w Mysłakowicach", date: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768684/kosciol-myslakowice_mzfc6q.png" },
+            { name: "Kościół Niepokalanego Poczęcia NMP w Raszowie", date: "06.07.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783767950/kosciol-raszow_bv9mrz.png" },
+            { name: "Kowarska Skała", date: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768377/skala-kowarska_pbtujx.png" },
+            { name: "Krzyż pokutny w Miedziance", date: "07.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768378/krzyz-miedzianka_rggmvy.png" },
+            { name: "Pieklisko – nieczynny kamieniołom", date: "21.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768163/pieklisko_vulgzp.png" },
+            { name: "Pałac w Ciechanowicach", date: "01.11.2023", img: "" },
+            { name: "Pałac w Wojanowie", date: "01.11.2023", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1777968871/palac-wojanow_eq1gb5.png" },
+            { name: "Schronisko PTTK „Szwajcarka”", date: "25.07.2021", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768379/schronisko-szwajcarka_uxmufk.png" },
+            { name: "Skalna Brama Kloebera k/Bukowca", date: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768376/skalna-brama-kolberta_zjiaur.png" },
+            { name: "Skała Fajka", date: "21.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768163/fajka_yh5wi0.png" },
+            { name: "Skały: Piec i Skalny Most", date: "21.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768164/skalny-most_cugjg4.png" },
+            { name: "Kowarska Starówka", date: "05.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768377/kowarska-starowka_hdiyfl.png" },
+            { name: "Stawy Karpnickie", date: "01.11.2023", img: "" },
+            { name: "Wieża widokowa w Bukowcu", date: "03.04.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1778158694/wieza-bukowiec_txpngj.png" },
+            { name: "Zamek Bolczów", date: "21.08.2024", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768165/zamek-bolczow_qfxw5w.png" },
+            { name: "Zamek w Karpnikach", date: "23.06.2026", img: "https://res.cloudinary.com/diljpkw9f/image/upload/v1783768162/zamek-karpniki_syn9kq.png" }
+        ];
+
+        function getImageHTML(url) {
+            if (url && url.trim() !== "") {
+                return `<img src="${url}" class="img-thumbnail" alt="Zdjęcie obiektu">`;
+            }
+            return `<span class="no-photo">⛰️ Brak zdjęcia</span>`;
+        }
+
+        function renderSzczyty() {
+            const container = document.getElementById('szczytyContainer');
+            let html = `<table>
+                <thead>
+                    <tr><th>Lp.</th><th>Szczyt</th><th>Wysokość</th><th>Data</th><th>Zdjęcie</th></tr>
+                </thead>
+                <tbody>`;
+            
+            szczyty.forEach((item, index) => {
+                html += `<tr class="visited-row">
+                    <td data-label="Lp.">${index + 1}</td>
+                    <td data-label="Szczyt"><strong>${item.name}</strong></td>
+                    <td data-label="Wysokość">${item.height} m n.p.m.</td>
+                    <td data-label="Data">${item.date}</td>
+                    <td data-label="Zdjęcie">${getImageHTML(item.img)}</td>
+                </tr>`;
+            });
+            
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
+        function renderObiekty() {
+            const container = document.getElementById('obiektyContainer');
+            let html = `<table>
+                <thead>
+                    <tr><th>Lp.</th><th>Miejsce</th><th>Data</th><th>Zdjęcie</th></tr>
+                </thead>
+                <tbody>`;
+            
+            obiekty.forEach((item, index) => {
+                html += `<tr class="visited-row">
+                    <td data-label="Lp.">${index + 1}</td>
+                    <td data-label="Miejsce"><strong>${item.name}</strong></td>
+                    <td data-label="Data">${item.date}</td>
+                    <td data-label="Zdjęcie">${getImageHTML(item.img)}</td>
+                </tr>`;
+            });
+            
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
+        function updateProgress() {
+            const total = szczyty.length + obiekty.length;
+            const visited = total; // Wszystkie zdobyte
+            
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            const percentage = (visited / total) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressText.innerText = `${visited} / ${total}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSzczyty();
+            renderObiekty();
+            updateProgress();
+        });
+    </script>
 </body>
 </html>
