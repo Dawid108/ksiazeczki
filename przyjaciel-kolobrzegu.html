@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przyjaciel Kołobrzegu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005f73;
+            --primary-dark: #0a9396;
+            --accent: #ee9b00;
+            --accent-gold: #d4af37;
+            --bg-main: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #1d2d44;
+            --text-muted: #6c757d;
+            --success: #2a9d8f;
+            --danger: #e76f51;
+            --border-radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Header / Hero */
+        header {
+            background: linear-gradient(135deg, #002b36 0%, #005f73 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--bg-main);
+            transform: skewY(-2deg);
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge-img-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+            margin-bottom: 20px;
+            border: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .badge-img-container:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .badge-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #ffd166;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: -30px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Nav Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0, 95, 115, 0.3);
+        }
+
+        /* Section Containers */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card Component */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Progress Bar Section */
+        .progress-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .progress-stats {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .progress-bar-bg {
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #2a9d8f, #e9c46a, #d4af37);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Requirements Grid */
+        .badge-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .badge-card {
+            background: var(--bg-main);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 5px solid #ccc;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .badge-card.popular { border-color: #8d99ae; }
+        .badge-card.bronze { border-color: #cd7f32; }
+        .badge-card.silver { border-color: #c0c0c0; }
+        .badge-card.gold { border-color: #d4af37; background: #fffdf5; }
+
+        .badge-card.gold::after {
+            content: '✓ SPEŁNIONE';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            background: #2a9d8f;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+
+        .badge-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .badge-card li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-card li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Confirmations / Strava / Photos */
+        .routes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .route-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+        }
+
+        .route-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #fc4c02; /* Strava Color */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .photo-img-wrapper {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #e9ecef;
+            position: relative;
+        }
+
+        .photo-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover .photo-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .photo-caption {
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Places List Category Header */
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: #eef5f6;
+            border-radius: 12px;
+            margin: 25px 0 15px 0;
+        }
+
+        .category-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Items List */
+        .items-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .place-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .place-item:hover {
+            border-color: var(--primary-dark);
+            background: #fafcfc;
+        }
+
+        .place-item.visited {
+            border-left: 4px solid var(--success);
+        }
+
+        .place-item.not-visited {
+            border-left: 4px solid var(--danger);
+            opacity: 0.75;
+            background: #fff8f8;
+        }
+
+        .place-info {
+            flex: 1;
+        }
+
+        .place-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .place-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .place-status {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .status-visited {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-not-visited {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* Tree Sub-items */
+        .sub-tree {
+            margin-top: 8px;
+            padding-left: 15px;
+            border-left: 2px dashed #cbd5e1;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .sub-tree-item {
+            margin-bottom: 4px;
+        }
+
+        /* Filter Controls */
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #edf2f4;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.1rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .card { padding: 20px; }
+            .badge-img-container { width: 110px; height: 110px; }
+            .place-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .place-status { align-self: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Header -->
+    <header>
+        <div class="hero-container">
+            <div class="badge-img-container">
+                <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785428339/przyjaciel-kolobrzegu_ugbsii.png" alt="Odznaka Przyjaciel Kołobrzegu">
+            </div>
+            <h1>Przyjaciel Kołobrzegu</h1>
+            <p class="hero-subtitle">Osobista kronika krajoznawcza i status zdobywania odznaki PTTK</p>
+            <div class="status-badge">
+                <span>🏆 Stopień Złoty Osiągnięty!</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('tab-overview')">📊 Postęp & Wymagania</button>
+            <button class="tab-btn" onclick="switchTab('tab-confirmations')">📸 Moje Potwierdzenia</button>
+            <button class="tab-btn" onclick="switchTab('tab-places')">🗺️ Wykaz Obiektów (70)</button>
+        </div>
+
+        <!-- TAB 1: OVERVIEW & REQUIREMENTS -->
+        <div id="tab-overview" class="tab-content active">
+            <!-- Progress Card -->
+            <div class="card progress-section">
+                <div class="progress-header">
+                    <span class="progress-title">Całkowity postęp odznaki</span>
+                    <span class="progress-stats">70 / 70</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill"></div>
+                </div>
+                <p style="font-weight: 600; color: var(--success); text-align: center; font-size: 1.05rem;">
+                    🎉 Gratulacje! Wszystkie wymagania na odznakę Złotą zostały spełnione!
+                </p>
+            </div>
+
+            <!-- Badge Requirements Card -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Wymagania na Odznaki PTTK</span>
+                </div>
+                <div class="badge-levels-grid">
+                    <!-- Popularny -->
+                    <div class="badge-card popular">
+                        <h3>🥉 Popularny</h3>
+                        <ul>
+                            <li>2 obiekty z Grupy I (zabytki)</li>
+                            <li>2 obiekty z Grupy II (pamięć)</li>
+                            <li>3 obiekty z Grupy III (przyroda)</li>
+                            <li>Zwiedzenie Muzeum Oręża Polskiego</li>
+                        </ul>
+                    </div>
+                    <!-- Brązowy -->
+                    <div class="badge-card bronze">
+                        <h3>🥉 Brązowy</h3>
+                        <ul>
+                            <li>4 obiekty z Grupy I (zabytki)</li>
+                            <li>3 obiekty z Grupy II (pamięć)</li>
+                            <li>7 obiektów z Grupy III (przyroda)</li>
+                        </ul>
+                    </div>
+                    <!-- Srebrny -->
+                    <div class="badge-card silver">
+                        <h3>🥈 Srebrny</h3>
+                        <ul>
+                            <li>6 obiektów z Grupy I (zabytki)</li>
+                            <li>4 obiekty z Grupy II (pamięć)</li>
+                            <li>10 obiektów z Grupy III (przyroda)</li>
+                        </ul>
+                    </div>
+                    <!-- Złoty -->
+                    <div class="badge-card gold">
+                        <h3>🥇 Złoty</h3>
+                        <ul>
+                            <li>8 obiektów z Grupy I (zabytki)</li>
+                            <li>5 obiektów z Grupy II (pamięć)</li>
+                            <li>15 obiektów z Grupy III (przyroda)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: CONFIRMATIONS (Strava + Photos) -->
+        <div id="tab-confirmations" class="tab-content">
+            <!-- Routes / Strava -->
+            <div class="card">
+                <div class="card-title">
+                    <span>🚴 Przebyte Trasy (Strava)</span>
+                </div>
+                <div class="routes-grid">
+                    <div class="route-card">
+                        <h4>📍 Trasa Kołobrzeg - 19km</h4>
+                        <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="19501305080" data-style="standard" data-from-embed="false" data-token="O9E6AHz7JgqgBpqwyPcQBSxptg29urzHIAamG5RUNso"></div>
+                    </div>
+                    <div class="route-card">
+                        <h4>📍 Trasa Podczele - 1km</h4>
+                        <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="19526149776" data-style="standard" data-from-embed="false" data-token="P1XldlmRzYqwxBRvELp86uT0LF75hhb_FGDCJ8s8mxs"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="card">
+                <div class="card-title">
+                    <span>📷 Galeria Potwierdzeń (19 Zdjęć)</span>
+                </div>
+                <div class="gallery-grid" id="gallery-grid"></div>
+            </div>
+        </div>
+
+        <!-- TAB 3: PLACES LIST -->
+        <div id="tab-places" class="tab-content">
+            <div class="card">
+                <div class="card-title">
+                    <span>📋 Wykaz Obiektów i Miejsc</span>
+                </div>
+                
+                <!-- Filter buttons -->
+                <div class="filter-container">
+                    <button class="filter-btn active" onclick="filterPlaces('all', this)">Wszystkie</button>
+                    <button class="filter-btn" onclick="filterPlaces('visited', this)">✅ Odwiedzone</button>
+                    <button class="filter-btn" onclick="filterPlaces('not-visited', this)">❌ Nieodwiedzone</button>
+                </div>
+
+                <!-- Group I -->
+                <div class="category-header">
+                    <span class="category-title">🏛️ Grupa I: Zabytki</span>
+                    <span class="category-badge">20 / 21</span>
+                </div>
+                <div class="items-list" id="group-1-list"></div>
+
+                <!-- Group II -->
+                <div class="category-header">
+                    <span class="category-title">🕊️ Grupa II: Miejsca Pamięci</span>
+                    <span class="category-badge">14 / 17</span>
+                </div>
+                <div class="items-list" id="group-2-list"></div>
+
+                <!-- Group III -->
+                <div class="category-header">
+                    <span class="category-title">🌳 Grupa III: Pomniki Przyrody</span>
+                    <span class="category-badge">38 / 38</span>
+                </div>
+                <div class="items-list" id="group-3-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Strava Embed Script -->
+    <script src="https://strava-embeds.com/embed.js"></script>
+
+    <!-- Custom JS Logic -->
+    <script>
+        const photosData = [
+            { name: "Park Jana Henryka Dąbrowskiego Kołobrzeg", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427480/park-kolobrzeg_zxvcoh.png" },
+            { name: "Brama Radzikowska Kołobrzeg", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427479/brama-radzikowska-kolobrzeg_fc68rm.png" },
+            { name: "Cerkiew Opieki Matki Bożej w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427478/cerkiew-kolobrzeg_jheszk.png" },
+            { name: "Kołobrzeski Skansen Morski", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427479/skansen-kolobrzeg_d7xarf.png" },
+            { name: "Reduta Solna w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427478/reduta-solna-kolobrzeg_cumevt.png" },
+            { name: "Reduta Morast w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/reduta-morast-kolobrzeg_l2gcw3.png" },
+            { name: "Skwer Koncertów Porannych w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/skwer-kolobrzeg_qhaels.png" },
+            { name: "Latarnia Morska w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/latarnia-kolobrzeg_k1a1hh.png" },
+            { name: "Pomnik Zaślubin Polski z Morzem w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/zaslubiny-kolobrzeg_zcnoiy.png" },
+            { name: "Szkoła Muzyczna I stopnia w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/muzyka-kolobrzeg_qbmdmw.png" },
+            { name: "Pomnik walk o Kołobrzeg", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427872/walki-kolobrzeg_zlzahv.png" },
+            { name: "Muzeum Oręża Polskiego w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427873/muzeum-kolobrzeg_pee5mp.png" },
+            { name: "Bazylika konkatedralna w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427872/bazylika-kolobrzeg_krvvwo.png" },
+            { name: "Pałac Brunszwickich w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427872/palac-kolobrzeg_bchp0v.png" },
+            { name: "Ratusz Miejski w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785427872/ratusz-kolobrzeg_hoet0z.png" },
+            { name: "Baszta Lontowa w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785428052/baszta-lontowa-kolobrzeg_sjpxxh.png" },
+            { name: "Wieża Ciśnień w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785428052/cisnien-kolobrzeg_eqqfbw.png" },
+            { name: "Pomnik Sanitariuszki w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785428052/sanitariuszka-kolobrzeg_weamok.png" },
+            { name: "Kamienny Szaniec w Kołobrzegu", url: "https://res.cloudinary.com/diljpkw9f/image/upload/v1785428051/szaniec-kolobrzeg_ztvoif.png" }
+        ];
+
+        const group1Data = [
+            { title: "Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny", desc: "ul. Katedralna", visited: true, date: "28.07.2026" },
+            { title: "Kościół rektoralny Niepokalanego Poczęcia NMP (1889-1895)", desc: "ul. Katedralna", visited: true, date: "28.07.2026" },
+            { title: "Latarnia morska", desc: "Port w Kołobrzegu", visited: true, date: "28.07.2026" },
+            { title: "Zespół fortów: Kamienny Szaniec", desc: "Budowla kamienna", visited: true, date: "28.07.2026" },
+            { title: "Zespół fortów: Wilczy Szaniec", desc: "Amfiteatr", visited: true, date: "28.07.2026" },
+            { title: "Zespół fortów: Reduta Solna", desc: "Wyspa Solna, z 1630r.", visited: true, date: "28.07.2026" },
+            { title: "Baszta Lontowa (Baszta Prochowa)", desc: "ul. Dubois", visited: true, date: "28.07.2026" },
+            { title: "Ratusz Miejski", desc: "pl. Ratuszowy 1", visited: true, date: "28.07.2026" },
+            { title: "Kamienica Schliffenów (XV w.)", desc: "ul. Emilii Gierczak", visited: true, date: "28.07.2026" },
+            { title: "Pałac rodziny Brunszwickich (von Braunschweig)", desc: "ul. Armii Krajowej 10", visited: true, date: "28.07.2026" },
+            { title: "Magazyn „Katownia” (XV w., ob. Restauracja \"Domek Kata\")", desc: "ul. Ratuszowa 2", visited: true, date: "28.07.2026" },
+            { title: "Akademia Rycerska (hala z końca XVIII w.)", desc: "ul. Wąska / ul. Mariacka", visited: true, date: "28.07.2026" },
+            { title: "Budynek Powiatowej Komendy Policji", desc: "ul. Drzymały", visited: true, date: "28.07.2026" },
+            { title: "Wieża ciśnień z 1885 r.", desc: "ul. Budowlana", visited: true, date: "28.07.2026" },
+            { title: "Gmach Poczty (1884 r.)", desc: "ul. Dworcowa", visited: true, date: "28.07.2026" },
+            { title: "Most drogowy (1909 r.)", desc: "Kołobrzeg", visited: true, date: "28.07.2026" },
+            { title: "Łaźnia Miejska (ob. Państwowa Szkoła Muzyczna)", desc: "ul. Frankowskiego", visited: true, date: "28.07.2026" },
+            { title: "Ruiny baszty więziennej", desc: "ul. Wąska", visited: true, date: "28.07.2026" },
+            { title: "Dom przy ul. Szpitalnej (pierwotnie Brama Radzikowska z 1708 r.)", desc: "ul. Szpitalna", visited: true, date: "28.07.2026" },
+            { title: "Neogotycki budynek kościoła św. Marcina", desc: "ul. Zwycięzców", visited: false, date: null },
+            { title: "Kamienica przy ul. Spacerowej 39", desc: "Dzielnica Portowa, miejsce kapitulacji Bornholmu", visited: true, date: "28.07.2026" }
+        ];
+
+        const group2Data = [
+            { title: "Pomnik Zaślubin Polski z Morzem", desc: "Nad brzegiem morza", visited: true, date: "28.07.2026" },
+            { title: "Pomnik Sanitariuszki", desc: "W parku nadmorskim", visited: true, date: "28.07.2026" },
+            { title: "Pomnik walk o Kołobrzeg", desc: "W parku naprzeciw poczty głównej", visited: true, date: "28.07.2026" },
+            { title: "Pomnik Arcybiskupa Marcina Dunina", desc: "ul. Armii Krajowej przy bazylice", visited: true, date: "28.07.2026" },
+            { title: "Pomnik podporucznika Edmunda Łopuskiego", desc: "ul. ppor. E. Łopuskiego", visited: true, date: "28.07.2026" },
+            { title: "Lapidarium niemieckie", desc: "Teren parku przy ul. Zdrojowej", visited: true, date: "28.07.2026" },
+            { title: "Lapidarium żydowskie", desc: "Park nadmorski, zbieg ul. Zdrojowej i Mickiewicza", visited: true, date: "28.07.2026" },
+            { title: "Tablica: Ściana dworca PKP", desc: "Ściana dworca PKP", visited: true, date: "28.07.2026" },
+            { title: "Tablica: Mur okalający byłe koszary", desc: "ul. Artyleryjska", visited: false, date: null },
+            { title: "Tablica: Miejsce po kościele św. Jerzego", desc: "Kołobrzeg", visited: false, date: null },
+            { title: "Tablica: Była fabryka farmaceutyczna", desc: "ul. Kasprowicza", visited: true, date: "28.07.2026" },
+            { title: "Tablica: Mur byłej gazowni (9 Zaodrzański Pułk Piechoty)", desc: "ul. Koszalińska", visited: true, date: "28.07.2026" },
+            { title: "Pomnik Tysiąclecia", desc: "Obok bazyliki", visited: true, date: "28.07.2026" },
+            { title: "Pomnik Kołobrzeskim Żeglarzom na Wiecznej Wachcie", desc: "W porcie jachtowym", visited: true, date: "28.07.2026" },
+            { title: "Pomnik Józefa Piłsudskiego", desc: "ul. Sybiraków", visited: true, date: "28.07.2026" },
+            { title: "Pomnik kmdr. Stanisława Mieszkowskiego", desc: "U podnóża Latarni Morskiej", visited: true, date: "28.07.2026" },
+            { title: "Pomnik Pamięci Pomordowanych Polaków w Obozach Koncentracyjnych", desc: "Cmentarz Komunalny w Kołobrzegu", visited: false, date: null }
+        ];
+
+        const group3Data = [
+            { 
+                title: "Park im. Aleksandra Fredry", 
+                desc: "Park miejski", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["5 dębów o obwodach 380-510 cm, wys. 17-20 m", "Buk zwyczajny (obw. 367 cm, wys. 20 m)", "Jodła kalifornijska (obw. 250 cm, wys. 35 m)"]
+            },
+            { 
+                title: "Park Nadmorski", 
+                desc: "Pas nadmorski", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["Cypryśnik błotny (obw. 220 cm)", "Cis", "Bluszcz pospolity (pomorski)"]
+            },
+            { 
+                title: "Park im. Henryka Dąbrowskiego", 
+                desc: "Park miejski", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["7 buków zwyczajnych o obwodzie 336-484 cm"]
+            },
+            { 
+                title: "Plac 18-go Marca", 
+                desc: "Plac miejski", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["Buk zwyczajny (obw. 400 cm, wiek ~200 lat)", "Buk strzępolistny (obw. 208 cm)", "Skrzydłoorzechy, Kłokoczka, Suchodrzewy", "Czeremchy, Lipa strzępolistna, Cis", "Kasztanowiec czerwony (obw. 385 cm)"]
+            },
+            { 
+                title: "Plac Pionierów", 
+                desc: "Plac miejski", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["Sosny czarne, Migdałowiec, Grujecznik japoński", "Wiśnie japońskie, Jabłonka brunszwicka", "Sosna wejmutka, Sumak szkarłatny, Głóg"]
+            },
+            { title: "ul. Szpitalna - Korkowiec amurski", desc: "Obwód 212 cm", visited: true, date: "28.07.2026" },
+            { title: "ul. Frankowskiego - 2 lipy drobnolistne", desc: "Obwody 515 cm i 320 cm", visited: true, date: "28.07.2026" },
+            { 
+                title: "ul. Łopuskiego - Platany i Kasztan", 
+                desc: "Aleja miejska & Klub Wojskowy", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["Aleja 74 platanów klonolistnych (obw. 150-350 cm)", "Kasztan jadalny (na terenie Klubu Wojskowego)"]
+            },
+            { title: "ul. Korzeniowskiego - Szydlica & Ostrokrzew", desc: "Szydlica japońska i ostrokrzew zimozielony", visited: true, date: "28.07.2026" },
+            { title: "ul. Towarowa - Aleja grabowa", desc: "Aleja grabowa", visited: true, date: "28.07.2026" },
+            { title: "ul. Solna - Topole czarne", desc: "Obwody 1065 cm i 404 cm, wys. 30 i 17 m", visited: true, date: "28.07.2026" },
+            { title: "ul. Kołłątaja - Cedry", desc: "Drzewa z gatunku cedr", visited: true, date: "28.07.2026" },
+            { title: "ul. Norwida - Cedry", desc: "Drzewa z gatunku cedr", visited: true, date: "28.07.2026" },
+            { 
+                title: "Podczele - Zespół leśno-parkowy", 
+                desc: "Podczele", 
+                visited: true, 
+                date: "28.07.2026",
+                details: ["Zespół buków i daglezji", "Kwitnąca odmiana bluszczu na olszy czarnej (rozpiętość 10 m)", "Grupa 8 dębów szypułkowych (obw. 240-430 cm)", "Okazy grabu pospolitego i buku zwyczajnego"]
+            }
+        ];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function renderGallery() {
+            const container = document.getElementById('gallery-grid');
+            container.innerHTML = photosData.map(photo => `
+                <div class="photo-card">
+                    <div class="photo-img-wrapper">
+                        <img src="${photo.url}" alt="${photo.name}" loading="lazy">
+                    </div>
+                    <div class="photo-caption">${photo.name}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderItems(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map(item => {
+                const isVisited = item.visited;
+                const statusClass = isVisited ? 'visited' : 'not-visited';
+                const statusText = isVisited ? `✅ Byłem tu ${item.date}` : '❌ Nie byłem';
+                const statusBadgeClass = isVisited ? 'status-visited' : 'status-not-visited';
+                
+                let detailsHtml = '';
+                if(item.details && item.details.length > 0) {
+                    detailsHtml = `
+                        <div class="sub-tree">
+                            ${item.details.map(d => `<div class="sub-tree-item">🌿 ${d}</div>`).join('')}
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="place-item ${statusClass}">
+                        <div class="place-info">
+                            <div class="place-name">${item.title}</div>
+                            <div class="place-desc">${item.desc}</div>
+                            ${detailsHtml}
+                        </div>
+                        <div class="place-status ${statusBadgeClass}">${statusText}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterPlaces(filter, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const allItems = document.querySelectorAll('.place-item');
+            allItems.forEach(item => {
+                if (filter === 'all') {
+                    item.style.display = 'flex';
+                } else if (filter === 'visited') {
+                    item.style.display = item.classList.contains('visited') ? 'flex' : 'none';
+                } else if (filter === 'not-visited') {
+                    item.style.display = item.classList.contains('not-visited') ? 'flex' : 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderGallery();
+            renderItems(group1Data, 'group-1-list');
+            renderItems(group2Data, 'group-2-list');
+            renderItems(group3Data, 'group-3-list');
+        });
+    </script>
+</body>
+</html>
