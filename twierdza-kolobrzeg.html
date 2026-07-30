@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twierdza Kołobrzeg - Potwierdzenie Zdobycia Odznaki</title>
+  <style>
+    :root {
+      --bg-color: #0f1410;
+      --card-bg: #1a221c;
+      --accent-color: #4a6b4e;
+      --accent-bright: #689f6c;
+      --text-main: #e2e8e3;
+      --text-muted: #9eb0a0;
+      --gold: #d4af37;
+      --border: #2c3a2f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 15px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 15px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sub-title {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Pasek Postępu */
+    .progress-section {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .progress-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .progress-bar-bg {
+      background: #0d120e;
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, var(--accent-color), var(--accent-bright));
+      height: 100%;
+      width: 100%; /* 10/10 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .badge-status {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 16px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      color: var(--accent-bright);
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    /* Odznaka */
+    .badge-container {
+      text-align: center;
+    }
+
+    .badge-img {
+      max-width: 220px;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .badge-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Galeria Zdjęć */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: #000;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      opacity: 0.85;
+      transform: scale(1.08);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.75);
+      font-size: 0.75rem;
+      padding: 4px 6px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Listy Obiektów */
+    .object-list {
+      list-style: none;
+    }
+
+    .object-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .object-list.visited li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-bright);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .object-list.info li::before {
+      content: "ℹ";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .object-name {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .requirements-box {
+      background: rgba(74, 107, 78, 0.15);
+      border-left: 4px solid var(--accent-bright);
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+    }
+
+    /* Lightbox modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .modal-caption {
+      color: var(--text-main);
+      margin-top: 15px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header>
+      <h1>Twierdza Kołobrzeg</h1>
+      <div class="sub-title">Dokumentacja zdobycia odznaki turystycznej</div>
+    </header>
+
+    <!-- Postęp -->
+    <div class="progress-section">
+      <div class="progress-title">
+        <span>Wymagany postęp:</span>
+        <span style="color: var(--accent-bright); font-weight: bold;">10 / 10 (100%)</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill">UKOŃCZONE</div>
+      </div>
+      <div class="badge-status">★ Odznaka Zdobyta ★</div>
+    </div>
+
+    <div class="grid grid-2col" style="margin-bottom: 25px;">
+      
+      <!-- Sekcja Odznaki -->
+      <div class="card badge-container">
+        <h2>Zdjęcie Odznaki</h2>
+        <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785430817/twierdza-kolobrzeg_ehnyza.png" alt="Odznaka Twierdza Kołobrzeg" class="badge-img" onclick="openModal(this.src, 'Odznaka Twierdza Kołobrzeg')">
+      </div>
+
+      <!-- Wymagania -->
+      <div class="card">
+        <h2>Wymagania Odznaki</h2>
+        <div class="requirements-box">
+          Zdobycie odznaki polega na przejściu Miejskiego Szlaku Fortyfikacji (ok. 12km) i zwiedzeniu 10 obiektów fortyfikacyjnych. Zwiedzanie można rozpocząć od dowolnego obiektu i kontynuować w dowolnym kierunku, jak również odbywać etapami, pokonywanymi w dowolnym czasie.
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          * W ramach wyprawy zwiedzono <strong>12 obiektów</strong> (28.07.2026 r.) pokonując trasę 19 km.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Sekcja Potwierdzenia (Trasa + Zdjęcia) -->
+    <div class="grid" style="margin-bottom: 25px;">
+      <div class="card">
+        <h2>Potwierdzenia Trasy i Zdjęcia</h2>
+        
+        <h3 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 10px;">a) Pokonana Trasa (Strava)</h3>
+        <p style="margin-bottom: 12px; font-size: 0.95rem;">Kołobrzeg - 19 km</p>
+        
+        <!-- Strava Embed Placeholder -->
+        <div style="margin-bottom: 25px; overflow: hidden; border-radius: 8px;">
+          <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="19501305080" data-style="standard" data-from-embed="false" data-token="O9E6AHz7JgqgBpqwyPcQBSxptg29urzHIAamG5RUNso"></div>
+          <script src="https://strava-embeds.com/embed.js"></script>
+        </div>
+
+        <h3 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 15px;">b) Zdjęcia z Obiektów</h3>
+        <div class="gallery-grid">
+          
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427480/park-kolobrzeg_zxvcoh.png', 'Park Jana Henryka Dąbrowskiego Kołobrzeg')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427480/park-kolobrzeg_zxvcoh.png" alt="Park Dąbrowskiego">
+            <div class="gallery-caption">Park J.H. Dąbrowskiego</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427479/brama-radzikowska-kolobrzeg_fc68rm.png', 'Brama Radzikowska Kołobrzeg')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427479/brama-radzikowska-kolobrzeg_fc68rm.png" alt="Brama Radzikowska">
+            <div class="gallery-caption">Brama Radzikowska</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427479/skansen-kolobrzeg_d7xarf.png', 'Kołobrzeski Skansen Morski')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427479/skansen-kolobrzeg_d7xarf.png" alt="Skansen Morski">
+            <div class="gallery-caption">Skansen Morski</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427478/reduta-solna-kolobrzeg_cumevt.png', 'Reduta Solna w Kołobrzegu')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427478/reduta-solna-kolobrzeg_cumevt.png" alt="Reduta Solna">
+            <div class="gallery-caption">Reduta Solna</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/reduta-morast-kolobrzeg_l2gcw3.png', 'Reduta Morast w Kołobrzegu')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/reduta-morast-kolobrzeg_l2gcw3.png" alt="Reduta Morast">
+            <div class="gallery-caption">Reduta Morast</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/latarnia-kolobrzeg_k1a1hh.png', 'Latarnia Morska w Kołobrzegu')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427692/latarnia-kolobrzeg_k1a1hh.png" alt="Latarnia Morska">
+            <div class="gallery-caption">Latarnia Morska</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785427873/muzeum-kolobrzeg_pee5mp.png', 'Muzeum Oręża Polskiego w Kołobrzegu')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785427873/muzeum-kolobrzeg_pee5mp.png" alt="Muzeum Oręża Polskiego">
+            <div class="gallery-caption">Muzeum Oręża Polskiego</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785428052/baszta-lontowa-kolobrzeg_sjpxxh.png', 'Baszta Lontowa w Kołobrzegu')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785428052/baszta-lontowa-kolobrzeg_sjpxxh.png" alt="Baszta Lontowa">
+            <div class="gallery-caption">Baszta Lontowa</div>
+          </div>
+
+          <div class="gallery-item" onclick="openModal('https://res.cloudinary.com/diljpkw9f/image/upload/v1785428051/szaniec-kolobrzeg_ztvoif.png', 'Kamienny Szaniec w Kołobrzegu')">
+            <img src="https://res.cloudinary.com/diljpkw9f/image/upload/v1785428051/szaniec-kolobrzeg_ztvoif.png" alt="Kamienny Szaniec">
+            <div class="gallery-caption">Kamienny Szaniec</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Obiekty Zwiedzone oraz Pozostałe -->
+    <div class="grid grid-2col">
+      
+      <!-- Wykaz Zwiedzonych -->
+      <div class="card">
+        <h2>Zwiedzone Obiekty (12)</h2>
+        <p style="font-size: 0.85rem; color: var(--gold); margin-bottom: 12px;">Data zwiedzania: 28.07.2026 r.</p>
+        <ul class="object-list visited">
+          <li><span class="object-name">Akademia Rycerska</span> – założona w 1655 r. przez Wielkiego Elektora Fryderyka Wilhelma.</li>
+          <li><span class="object-name">Ruiny Baszty Więziennej</span> – przy ul. Wąskiej.</li>
+          <li><span class="object-name">Baszta Lontowa</span> – zwana Prochową.</li>
+          <li><span class="object-name">Pozostałości dawnych Fortyfikacji</span> – park im. gen. Jana Henryka Dąbrowskiego.</li>
+          <li><span class="object-name">Fort Wilczy</span> – powstał w latach 1806 – 1807, obecnie amfiteatr.</li>
+          <li><span class="object-name">Kamienny Szaniec</span> – zbudowany w latach 1832 – 1836, obecnie restauracja.</li>
+          <li><span class="object-name">Fort Ujście</span> – zbudowany w latach 1770 – 1774, obecnie latarnia morska z 1945 r.</li>
+          <li><span class="object-name">Reduta Morast</span> – powstała w latach 1770 – 1774 na Wyspie Solnej, obecnie port jachtowy.</li>
+          <li><span class="object-name">Reduta Solna</span> – zbudowana w latach 1832 – 1836, obecnie ośrodek sportów wodnych ZHP.</li>
+          <li><span class="object-name">Brama Radzikowska</span> – powstała w 1708 r.</li>
+          <li><span class="object-name">Batardeau</span> – obecnie fragmenty pozostałości po rozebraniu w 1988 r.</li>
+          <li><span class="object-name">Muzeum Oręża Polskiego</span>.</li>
+        </ul>
+      </div>
+
+      <!-- Dodatkowe Informacje -->
+      <div class="card">
+        <h2>Pozostałe Obiekty Forteczne</h2>
+        <ul class="object-list info">
+          <li><span class="object-name">Bastion Magdeburg</span> – prawy brzeg Parsęty w pobliżu batardeau (ceglany mur, podmurówka, obecnie parking/magazyny).</li>
+          <li><span class="object-name">Fort Napoleona</span> – w miejscu fortu znajduje się pętla autobusowa linii nr 7 oraz pozostałości wałów ziemnych.</li>
+          <li><span class="object-name">Szaniec Kleista</span> – w latach 50. XX w. wzniesiono tu stanowiska 19 Baterii Artylerii Stałej użytkowane do lat 70.</li>
+          <li><span class="object-name">Szaniec Siederland</span> – obiekt z XIX w., widoczne niewielkie wzniesienie przy Białych i Czerwonych Koszarach.</li>
+          <li><span class="object-name">Bateria Nettelbeck</span> – obiekt z lat 30. XX w. przy basenie rybackim, używany przez Marynarkę Wojenną RP.</li>
+          <li><span class="object-name">Białe Koszary</span> – wzniesione w 1903 roku.</li>
+          <li><span class="object-name">Czerwone Koszary</span> – wzniesione w 1900 roku.</li>
+          <li><span class="object-name">Koszary Waldenfelsa</span> – z lat 30. XX w., stacjonuje w nich 8 Batalion Remontowy.</li>
+          <li><span class="object-name">Stacja Radarowa Kondor</span> – koło Ustronia Morskiego (zachowane betonowe fundamenty radarów).</li>
+          <li><span class="object-name">Strzelnica wojskowa</span> – Lasek Załęże (zarysy wałów strzelnicy).</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer>
+      Twierdza Kołobrzeg - Raport Turystyczny
+    </footer>
+
+  </div>
+
+  <!-- Modal Lightbox -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <div id="modalCaption" class="modal-caption"></div>
+  </div>
+
+  <script>
+    function openModal(src, caption) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      const modalCaption = document.getElementById('modalCaption');
+      
+      modal.style.display = "flex";
+      modalImg.src = src;
+      modalCaption.textContent = caption;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
+    }
+
+    // Zamknięcie klawiszem ESC
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
