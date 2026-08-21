@@ -14,10 +14,6 @@ function numerateTables() {
 window.onload = function() {
     numerateTables();
 
-    // Motyw ciemny jeśli systemowy
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-    }
 
     // Szukanie nagłówka <h1 id="naglowek">
     const naglowek = document.getElementById("naglowek");
@@ -37,12 +33,6 @@ window.onload = function() {
     }
 };
 
-let czas108 = localStorage.getItem("czas108") || 0;
-
-setInterval(() => {
-    czas108 += 10;
-    localStorage.setItem("czas108", czas108);
-}, 10000);
 
 let id108 = localStorage.getItem("id108");
 
